@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o"
+  "CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o"
   "MyInvencibleLibrary.pdb"
   "MyInvencibleLibrary"
 )

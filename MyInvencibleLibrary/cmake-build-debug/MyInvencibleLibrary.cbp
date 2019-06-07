@@ -93,6 +93,9 @@
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Disco.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.cpp">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>

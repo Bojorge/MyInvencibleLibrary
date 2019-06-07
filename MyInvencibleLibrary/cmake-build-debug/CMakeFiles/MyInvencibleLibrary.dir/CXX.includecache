@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
+string
+/home/manuel/CLionProjects/MyInvencibleLibrary/string
+vector
+-
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/main.cpp
+iostream
+-
+Imagen.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
+

@@ -123,6 +123,33 @@ MyInvencibleLibrary/fast:
 	$(MAKE) -f CMakeFiles/MyInvencibleLibrary.dir/build.make CMakeFiles/MyInvencibleLibrary.dir/build
 .PHONY : MyInvencibleLibrary/fast
 
+Imagen.o: Imagen.cpp.o
+
+.PHONY : Imagen.o
+
+# target to build an object file
+Imagen.cpp.o:
+	$(MAKE) -f CMakeFiles/MyInvencibleLibrary.dir/build.make CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o
+.PHONY : Imagen.cpp.o
+
+Imagen.i: Imagen.cpp.i
+
+.PHONY : Imagen.i
+
+# target to preprocess a source file
+Imagen.cpp.i:
+	$(MAKE) -f CMakeFiles/MyInvencibleLibrary.dir/build.make CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.i
+.PHONY : Imagen.cpp.i
+
+Imagen.s: Imagen.cpp.s
+
+.PHONY : Imagen.s
+
+# target to generate assembly for a file
+Imagen.cpp.s:
+	$(MAKE) -f CMakeFiles/MyInvencibleLibrary.dir/build.make CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.s
+.PHONY : Imagen.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... MyInvencibleLibrary"
 	@echo "... edit_cache"
+	@echo "... Imagen.o"
+	@echo "... Imagen.i"
+	@echo "... Imagen.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

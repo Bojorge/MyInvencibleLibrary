@@ -7,6 +7,7 @@ int main() {
     Imagen I;
     I.leer("/home/manuel/Escritorio/color.ppm");
     I.invertir();
+    I.posterizar(6);
     I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");
     //Imagen T;
     //T = I.cortar(30,80,I.getAncho()-35,I.getAlto()-110);

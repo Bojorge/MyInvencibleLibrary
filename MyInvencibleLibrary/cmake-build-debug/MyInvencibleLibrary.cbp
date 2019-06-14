@@ -87,16 +87,28 @@
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Archivo.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/ArchivoBinario.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/BinDec.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Compresion.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Disco.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.cpp">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/RAID_5.h">

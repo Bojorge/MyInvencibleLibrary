@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o  -o MyInvencibleLibrary 
+/usr/bin/c++  -g   CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o  -o MyInvencibleLibrary 

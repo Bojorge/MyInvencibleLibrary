@@ -87,6 +87,9 @@
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Archivo.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/ArchivoBinario.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Compresion.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
@@ -100,6 +103,9 @@
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/RAID_5.h">

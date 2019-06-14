@@ -1,13 +1,16 @@
 #include <iostream>
 #include "Imagen.h"
+#include "Archivo.h"
 
 using namespace std;
 
 int main() {
+    //Archivo archivo;
+    //archivo.crear("nombre del archivo");
+
     Imagen I;
-    I.leer("/home/manuel/Escritorio/color.ppm");
-    I.invertir();
-    I.posterizar(6);
+    I.leer("/home/manuel/Escritorio/lailaihei.ppm");
+    //I.invertir();
     I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");
     //Imagen T;
     //T = I.cortar(30,80,I.getAncho()-35,I.getAlto()-110);

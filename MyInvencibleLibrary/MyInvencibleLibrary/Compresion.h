@@ -1,0 +1,14 @@
+//
+// Created by manuel on 24/05/19.
+//
+
+#ifndef MYINVENCIBLELIBRARY_COMPRESION_H
+#define MYINVENCIBLELIBRARY_COMPRESION_H
+
+
+class Compresion {
+
+};
+
+
+#endif //MYINVENCIBLELIBRARY_COMPRESION_H

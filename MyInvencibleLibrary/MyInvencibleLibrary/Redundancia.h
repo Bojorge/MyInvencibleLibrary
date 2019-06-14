@@ -1,0 +1,14 @@
+//
+// Created by manuel on 24/05/19.
+//
+
+#ifndef MYINVENCIBLELIBRARY_REDUNDANCIA_H
+#define MYINVENCIBLELIBRARY_REDUNDANCIA_H
+
+
+class Redundancia {
+
+};
+
+
+#endif //MYINVENCIBLELIBRARY_REDUNDANCIA_H

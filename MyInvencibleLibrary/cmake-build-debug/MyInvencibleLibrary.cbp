@@ -90,6 +90,9 @@
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/ArchivoBinario.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/BinDec.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Compresion.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>

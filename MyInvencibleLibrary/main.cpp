@@ -1,17 +1,22 @@
 #include <iostream>
 #include "Imagen.h"
 #include "Archivo.h"
+#include "BinDec.h"
 
 using namespace std;
 
 int main() {
+    //BinDec convertir;
+    //convertir.binAdeci(1111);
+    //convertir.decAbina(6);
+
     //Archivo archivo;
     //archivo.crear("nombre del archivo");
 
-    Imagen I;
-    I.leer("/home/manuel/Escritorio/lailaihei.ppm");
+    //Imagen I;
+    //I.leer("/home/manuel/Escritorio/lailaihei.ppm");
     //I.invertir();
-    I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");
+    //I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");
     //Imagen T;
     //T = I.cortar(30,80,I.getAncho()-35,I.getAlto()-110);
     //T.escribir("/home/manuel/Escritorio/ImagenCortada.ppm");I

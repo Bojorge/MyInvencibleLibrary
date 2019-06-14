@@ -14,24 +14,10 @@ iostream
 cstring
 -
 
-/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.cpp
-string
-/home/manuel/CLionProjects/MyInvencibleLibrary/string
-Imagen.h
-/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
-Pixel.h
-/home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h
-Archivo.h
-/home/manuel/CLionProjects/MyInvencibleLibrary/Archivo.h
-fstream
--
+/home/manuel/CLionProjects/MyInvencibleLibrary/BinDec.h
 iostream
 -
-sstream
--
 cmath
--
-cstring
 -
 
 /home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
@@ -47,4 +33,14 @@ cmath
 -
 Imagen.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/main.cpp
+iostream
+-
+Imagen.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
+Archivo.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Archivo.h
+BinDec.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/BinDec.h
 

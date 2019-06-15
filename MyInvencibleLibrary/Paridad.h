@@ -24,43 +24,40 @@ public:
             strdatos.append(",");
         }
         fe.close();
-        cout << strdatos << endl;
         return strdatos;
     }
-    vector<vector<string>> dividir(string texto){
+    vector<vector<string>> dividir(string texta){
         vector<string> datos;
         vector<vector<string>> div3;
-        vector<string> division=split (texto,"in,");
-        //cout<<division[1];
+        vector<string> division=split (texta,"in,");
         string ret=division[1];
         vector<string> separados=split(ret,",");
-        for(int i=3;i<=separados.size()-1;i++){
-            datos[i-3]=separados[i];
 
+        for(int i=3;i<=separados.size()-1;i++){
+            string dta=separados[i];
+            datos.push_back(dta);
         }
         vector<string> v1;
         vector<string> v2;
         vector<string> v3;
-        int cantEntre3 =datos.size()-1/3;
+        int cantEntre3 =(datos.size()-1)/3;
         int intervalo1=cantEntre3;
         int intervalo2=cantEntre3*2;
         int intervalo3=datos.size()-1;
-        for(int a=0;a<=intervalo1;a++){
-            v1[a]=datos[a];
+        for(int a=0;a<=intervalo1-1;a++){
+            v1.push_back(datos[a]);
         }
-        for(int b=intervalo1;b>=intervalo2;b++){
-            v2[b-intervalo1]=datos[b];
+        for(int b=intervalo1+1;b<=intervalo2;b++){
+            v2.push_back(datos[b]);
         }
-        for(int c=intervalo2;c>=intervalo3;c++){
-            v3[c-intervalo2]=datos[c];
+        for(int c=intervalo2+1;c<=intervalo3;c++){
+            v3.push_back(datos[c]);
         }
-        div3[0]=v1;
-        div3[1]=v2;
-        div3[2]=v3;
+        div3.push_back(v1);
+        div3.push_back(v2);
+        div3.push_back(v3);
         return div3;
     }
-
-
 
     vector<string> split (string s, string delimiter) {
         size_t pos_start = 0, pos_end, delim_len = delimiter.length();
@@ -76,7 +73,6 @@ public:
         res.push_back (s.substr (pos_start));
         return res;
     }
-
 };
 
 

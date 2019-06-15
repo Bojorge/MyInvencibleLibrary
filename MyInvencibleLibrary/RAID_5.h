@@ -4,6 +4,7 @@
 #include <iostream>
 #include <bitset>
 #include "Lista.h"
+#include "Paridad.h"
 
 
 
@@ -25,12 +26,23 @@ public:
             string strn2=parte2[i];
             int n1 = atoi (parte1[i].c_str());
             int n2 = atoi (parte2[i].c_str());
-            
+
             int xr=n1^n2;
             final.push_back(to_string(xr));
         }
         return final;
     }
+    string vecToString(vector<string> lista){
+        string vTs;
+        for(int i=0;i<=lista.size()-2;i++){
+            cout<<lista[i]<<endl;
+            vTs.append(lista[i]);
+            vTs.append(",");
+        }
+        vTs.append(lista[lista.size()-1]);
+        return vTs;
+    }
+
 };
 
 

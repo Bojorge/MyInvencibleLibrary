@@ -140,6 +140,9 @@ void Imagen::escribir(std::string nombreFichero) const {
 
 void Imagen::dividir(string NombreArchivo){
     ifstream F(NombreArchivo.c_str());
+    int V1;
+    int V2;
+    int V3;
     string linea;
     int _alto, _ancho, max;
 
@@ -161,7 +164,16 @@ void Imagen::dividir(string NombreArchivo){
 
     istringstream S(linea);
     S >> _ancho >> _alto;
-    cout<<_ancho<<"  "<<_alto<<endl;
+    //cout<<_ancho<<"  "<<_alto<<endl;
+    V1=_ancho*_alto;
+    V2=V1;
+    V3=V1;
+    //int vector1[V1];
+    //int vector2[V2];
+    //int vector3[V3];
+    vector<int> vector1;
+    vector<int> vector2;
+    vector<int> vector3;
 
     F >> max; // maxima intensidad de color entre 0 y 255
     cout<<max<<endl;
@@ -172,34 +184,46 @@ void Imagen::dividir(string NombreArchivo){
         F >> _pixels[i].r;
         F >> _pixels[i].g;
         F >> _pixels[i].b;
+        
+        cout << (_pixels[i].r)<<"  "<<(_pixels[i].g)<<"  "<<(_pixels[i].b)<<endl;
 
         if(i%_ancho == (_ancho-1)){
-            cout<<"\n"<<endl;
+            cout<<"\n";
         }
+
+        /*
+        if(i < V1) {
+            vector1[i] = _pixels[i].r;
+            vector1[i + 1] = _pixels[i].g;
+            vector1[i + 2] = _pixels[i].b;
+
+            //cout << vector1[i]<<"  "<< vector1[i+1]<<"  "<< vector1[i+2]<<endl;
+
+
+        }
+        else if(i >= V1 && i < V1*2) {
+            for(int y=0; y< V1-3; y++) {
+                vector2[y] = _pixels[i].r;
+                vector2[y + 1] = _pixels[i].g;
+                vector2[y + 2] = _pixels[i].b;
+            }
+        }
+        else if (i>=V1+2){
+            for(int z=0; z< V1-3; z++){
+                vector3[z]=_pixels[i].r;
+                vector3[z+1]=_pixels[i].g;
+                vector3[z+2]=_pixels[i].b;
+            }
+        }
+*/
     }
 
+    /*for(int o=0; o< V1-3; o++) {
+        cout << vector1[o]<<endl;
+    }*/
+
 }
-/*ifstream archivo;
-string texto;
-//archivo.open("datosServer.txt",ios::in);
-archivo.open(NombreArchivo,ios::in);
 
-if(archivo.fail()){
-    cout<<"No se pudo abrir el archivo";
-    exit(1);
-}
-cout<<"ALGO ANDA MAL POR AQUI"<<endl;
-cout<<"ALGO ANDA MAL POR AQUI"<<endl;
-cout<<"ALGO ANDA MAL POR AQUI"<<endl;
-while(!archivo.eof()){// mientras no se haya terminado el archivo
-    getline(archivo,texto);
-
-
-    cout<<texto<<endl;
-}
-archivo.close();*/
-
-};
 
 Imagen Imagen::cortar(int izq, int arr, int der, int aba) const {
     Imagen T(der-izq, aba-arr);

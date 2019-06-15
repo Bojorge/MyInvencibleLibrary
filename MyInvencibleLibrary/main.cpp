@@ -12,9 +12,9 @@ int main() {
 
     Archivo archivo;
     //archivo.crear("nombre del archivo");
-    archivo.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
 
-    //Imagen I;
+    Imagen I;
+    I.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
     //I.leer("/home/manuel/Escritorio/color.ppm");
     //I.invertir();
     //I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");

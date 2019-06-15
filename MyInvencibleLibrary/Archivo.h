@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
+#include <sstream>
 
 
 using namespace std;
@@ -18,33 +19,32 @@ class Archivo {
 
 public:
 
-    void crear(char nombre[]){
+    void crear(string nombre){
 
-        char formato[] = ".txt";
-        char nombreArchivo[100];
+        //string formato = ".txt";
+        //string nombreArchivo=nombre+".txt";
 
-        strcpy(nombreArchivo,nombre);
-        strcat(nombreArchivo,formato);
+        //strcpy(nombreArchivo,nombre);
+        //strcat(nombreArchivo,formato);
 
-        escribir(nombreArchivo, 7);
-
-
+        escribir(nombre, "NULL");
 
     };
 
-    void escribir(char nombre[], int pixels){
+    void escribir(string nombre, string ImageData){
+        nombre+=".txt";
         std::ofstream archivo;
 
-        archivo.open(nombre,std::ios::out);
+        archivo.open("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/"+nombre,std::ios::out);
 
         if (archivo.fail()){
             cout<<"No se pudo abrir el archivo"<<endl;
             exit(1);
 
         }
-
-            archivo<<"\n"<<pixels<<"\n";
-
+        for(int i=0; i< ImageData.length();i++) {
+            archivo << ImageData[i];
+        }
         archivo.close();
 
     };
@@ -68,8 +68,6 @@ public:
         archivo.close();
 
     };
-
-
 
 };
 

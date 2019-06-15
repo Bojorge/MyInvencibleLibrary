@@ -10,11 +10,12 @@ int main() {
     //convertir.binAdeci(1111);
     //convertir.decAbina(6);
 
-    //Archivo archivo;
+    Archivo archivo;
     //archivo.crear("nombre del archivo");
+    archivo.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
 
     //Imagen I;
-    //I.leer("/home/manuel/Escritorio/lailaihei.ppm");
+    //I.leer("/home/manuel/Escritorio/color.ppm");
     //I.invertir();
     //I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");
     //Imagen T;

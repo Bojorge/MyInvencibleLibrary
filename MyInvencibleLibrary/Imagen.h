@@ -10,20 +10,6 @@
 #include <vector>
 
 
-/*struct Pixel {
-    int r, g, b;
-
-
-    Pixel() {
-        r=0; g=0; b=0;
-    }
-    Pixel(int _r, int _g, int _b){
-        r = _r; g = _g; b = _b;
-    }
-    void invertir();
-    void posterizar(int niveles);
-};*/
-
 class Imagen {
     //std::vector<int> _pixels;
     std::vector<Pixel> _pixels;
@@ -44,7 +30,9 @@ public:
         _pixels[j*_ancho+i]=valor;
     }
 
-    void leer(std::string nombreFichero);    /////////////////
+    void leer(std::string nombreFichero);
+
+    void dividir(std::string nombreFichero);
 
     void escribir(std::string nombreFichero) const;
 

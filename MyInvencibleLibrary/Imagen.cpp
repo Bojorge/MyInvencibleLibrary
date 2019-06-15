@@ -36,13 +36,19 @@ Imagen::Imagen(const Imagen &other)
     _ancho=other._ancho;
 }
 
+
 void Imagen::leer(string nombreFichero){
     ifstream F(nombreFichero.c_str());
     string linea;
-
+    string nombreArchivostr;
+    string texto;
     Archivo archivo;
     int contador=0;
-
+    int contador2=0;
+    int s=0;
+    int max;
+    string textoPixels="";
+    string cantidadColores="";
     for (int i = nombreFichero.length()-5; i > 0; i--) {
 
         if(nombreFichero[i] == '/'){
@@ -52,8 +58,7 @@ void Imagen::leer(string nombreFichero){
         }
     }
     char nombreArchivoAUX[contador];
-    int contador2=0;
-    int s=0;
+
 
     for (int i = nombreFichero.length()-5; i > 0; i--) {
 
@@ -65,46 +70,55 @@ void Imagen::leer(string nombreFichero){
             s+=1;
         }
     }
-    //cout << contador;
     char nombreArchivo[contador2];
     for (int i = 0; i < sizeof(nombreArchivoAUX); i++) {
         nombreArchivo[i] = nombreArchivoAUX[contador2-1];
         contador2-=1;
-        //cout << " "<<nombreArchivo[i];
     }
 
     for (int i = 0; i < sizeof(nombreArchivo); i++) {
-        cout << " "<<nombreArchivo[i];
+        nombreArchivostr+=nombreArchivo[i];
     }
 
-
-
-    archivo.crear(nombreArchivo);
+    archivo.crear(nombreArchivostr);
 
     cout<<"\n archivo creado"<<endl;
 
     getline(F, linea);
+
     if(linea!="P3"){
         cout<<"Formato incorrecto"<<endl;
         return;
     }
+    texto+=linea+"\n";
 
     getline(F, linea); // se leen los comentarios
+    texto+=linea+"\n";
     while(linea[0] == '#'){
         getline(F, linea);
+        texto+=linea+"\n";
     }
+
     istringstream S(linea);
     S >> _ancho >> _alto;
 
-    int max;
-    F >> max; // maxima intensidad de color entre 0 y 255
 
+    F >> max; // maxima intensidad de color entre 0 y 255
+    texto+=to_string(max)+"\n";
+
+    int contador3;
     _pixels.resize(_ancho*_alto);
     for(int i=0; i<_pixels.size(); i++){
-        F >>  _pixels[i].r;
+        F >> _pixels[i].r;
         F >> _pixels[i].g;
         F >> _pixels[i].b;
+        textoPixels+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
+        if(i%_ancho == (_ancho-1)){
+            textoPixels+="\n";
+        }
     }
+    texto+=textoPixels;
+    archivo.escribir(nombreArchivostr, texto);
 }
 
 void Imagen::escribir(std::string nombreFichero) const {
@@ -123,6 +137,69 @@ void Imagen::escribir(std::string nombreFichero) const {
         }
     }
 }
+
+void Imagen::dividir(string NombreArchivo){
+    ifstream F(NombreArchivo.c_str());
+    string linea;
+    int _alto, _ancho, max;
+
+
+    getline(F, linea);
+    cout<<linea<<endl;
+    if(linea!="P3"){
+        cout<<"Formato incorrecto"<<endl;
+        return;
+    }
+
+
+    getline(F, linea); // se leen los comentarios
+    cout<<linea<<endl;
+    while(linea[0] == '#'){
+        getline(F, linea);
+        cout<<linea<<endl;
+    }
+
+    istringstream S(linea);
+    S >> _ancho >> _alto;
+    cout<<_ancho<<"  "<<_alto<<endl;
+
+    F >> max; // maxima intensidad de color entre 0 y 255
+    cout<<max<<endl;
+
+    int contador3;
+    _pixels.resize(_ancho*_alto);
+    for(int i=0; i<_pixels.size(); i++){
+        F >> _pixels[i].r;
+        F >> _pixels[i].g;
+        F >> _pixels[i].b;
+
+        if(i%_ancho == (_ancho-1)){
+            cout<<"\n"<<endl;
+        }
+    }
+
+}
+/*ifstream archivo;
+string texto;
+//archivo.open("datosServer.txt",ios::in);
+archivo.open(NombreArchivo,ios::in);
+
+if(archivo.fail()){
+    cout<<"No se pudo abrir el archivo";
+    exit(1);
+}
+cout<<"ALGO ANDA MAL POR AQUI"<<endl;
+cout<<"ALGO ANDA MAL POR AQUI"<<endl;
+cout<<"ALGO ANDA MAL POR AQUI"<<endl;
+while(!archivo.eof()){// mientras no se haya terminado el archivo
+    getline(archivo,texto);
+
+
+    cout<<texto<<endl;
+}
+archivo.close();*/
+
+};
 
 Imagen Imagen::cortar(int izq, int arr, int der, int aba) const {
     Imagen T(der-izq, aba-arr);

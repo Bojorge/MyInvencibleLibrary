@@ -4,13 +4,10 @@
 
 #include "string"
 #include "Imagen.h"
-#include "Pixel.h"
-#include "Archivo.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <cmath>
-#include <cstring>
 
 using namespace std;
 
@@ -23,7 +20,7 @@ Imagen::Imagen()
 }
 
 Imagen::Imagen(int ancho, int alto)
-: _pixels(ancho * alto, Pixel(0, 0, 0))  // le da un tamaño al vector y le da un valor inicial a cada posicion (0=negro)
+: _pixels(ancho*alto, Pixel(0, 0, 0))  // le da un tamaño al vector y le da un valor inicial a cada posicion (0=negro)
 {
     _ancho = ancho;
     _alto = alto;
@@ -39,49 +36,6 @@ Imagen::Imagen(const Imagen &other)
 void Imagen::leer(string nombreFichero){
     ifstream F(nombreFichero.c_str());
     string linea;
-
-    Archivo archivo;
-    int contador=0;
-
-    for (int i = nombreFichero.length()-5; i > 0; i--) {
-
-        if(nombreFichero[i] == '/'){
-            break;
-        }else{
-            contador+=1;
-        }
-    }
-    char nombreArchivoAUX[contador];
-    int contador2=0;
-    int s=0;
-
-    for (int i = nombreFichero.length()-5; i > 0; i--) {
-
-        if(nombreFichero[i] == '/'){
-            break;
-        }else{
-            contador2+=1;
-            nombreArchivoAUX[s] = nombreFichero[i];
-            s+=1;
-        }
-    }
-    //cout << contador;
-    char nombreArchivo[contador2];
-    for (int i = 0; i < sizeof(nombreArchivoAUX); i++) {
-        nombreArchivo[i] = nombreArchivoAUX[contador2-1];
-        contador2-=1;
-        //cout << " "<<nombreArchivo[i];
-    }
-
-    for (int i = 0; i < sizeof(nombreArchivo); i++) {
-        cout << " "<<nombreArchivo[i];
-    }
-
-
-
-    archivo.crear(nombreArchivo);
-
-    cout<<"\n archivo creado"<<endl;
 
     getline(F, linea);
     if(linea!="P3"){
@@ -101,7 +55,7 @@ void Imagen::leer(string nombreFichero){
 
     _pixels.resize(_ancho*_alto);
     for(int i=0; i<_pixels.size(); i++){
-        F >>  _pixels[i].r;
+        F >> _pixels[i].r;
         F >> _pixels[i].g;
         F >> _pixels[i].b;
     }
@@ -156,7 +110,6 @@ void Pixel::invertir() {
     b = 255-b;
 }
 
-
 void Imagen::invertir() {
     for(int i=0; i < _pixels.size(); i++){
         _pixels[i].invertir();
@@ -174,7 +127,6 @@ void Pixel::posterizar(int niveles) {
     g = post(g, niveles);
     b = post(b, niveles);
 }
-
 
 void Imagen::posterizar(int niveles) {
     for(int i=0; i < _pixels.size(); i++) {

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.cpp" "/home/manuel/CLionProjects/MyInvencibleLibrary/cmake-build-debug/CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o"
-  "/home/manuel/CLionProjects/MyInvencibleLibrary/main.cpp" "/home/manuel/CLionProjects/MyInvencibleLibrary/cmake-build-debug/CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o"
+  "/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/Imagen.cpp" "/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/cmake-build-debug/CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o"
+  "/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/main.cpp" "/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/cmake-build-debug/CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

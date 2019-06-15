@@ -6,13 +6,10 @@
 #define MYINVENCIBLELIBRARY_IMAGEN_H
 
 #include "string"
-#include "Pixel.h"
 #include <vector>
 
-
-/*struct Pixel {
+struct Pixel {
     int r, g, b;
-
 
     Pixel() {
         r=0; g=0; b=0;
@@ -22,7 +19,7 @@
     }
     void invertir();
     void posterizar(int niveles);
-};*/
+};
 
 class Imagen {
     //std::vector<int> _pixels;
@@ -44,7 +41,7 @@ public:
         _pixels[j*_ancho+i]=valor;
     }
 
-    void leer(std::string nombreFichero);    /////////////////
+    void leer(std::string nombreFichero);
 
     void escribir(std::string nombreFichero) const;
 

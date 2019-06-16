@@ -25,6 +25,7 @@ private:
 
     char buff[MAX];
 
+
 public:
 
     void leerImagen(int sockfd){
@@ -56,12 +57,18 @@ public:
         for (;;) {
 
             enviarImagen(sockfd);
+
             if(terminarConexion()){
                 break;
             }
 
             leerImagen(sockfd);
+            if ((strncmp(buff, "tome", 4)) == 0) {
+                printf("\n \n Se recibio la imagen 001 \n");
+                break;
+            }
         }
+
     };
 
 

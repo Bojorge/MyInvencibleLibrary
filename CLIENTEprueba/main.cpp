@@ -31,9 +31,11 @@ using namespace std;
 
 int main() {
 
+    cout<<"\n EL CLIENTE DEBE ENVIAR EL CODIGO 001 \n";
     Cliente cliente;
 
     cliente.iniciar();
+    cout<<"\n *** pasa a la siguiente linea *** \n";
     
     return 0;
 }

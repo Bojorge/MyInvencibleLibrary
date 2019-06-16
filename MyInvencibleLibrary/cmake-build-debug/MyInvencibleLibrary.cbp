@@ -105,6 +105,12 @@
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Lista.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Nodo.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
@@ -115,6 +121,9 @@
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Redundancia.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Servidor.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/main.cpp">

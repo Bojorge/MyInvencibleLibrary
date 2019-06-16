@@ -2,20 +2,37 @@
 #include "Imagen.h"
 #include "Archivo.h"
 #include "BinDec.h"
+#include "Servidor.h"
+
+//Servidor
+#include <iostream>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <zconf.h>
+#include <sys/types.h>
+#include <sys/socket.h>
 
 using namespace std;
 
 int main() {
+
+    Servidor servidor;
+
+    servidor.iniciar();
     //BinDec convertir;
     //convertir.binAdeci(1111);
     //convertir.decAbina(6);
 
-    Archivo archivo;
+    //Archivo archivo;
     //archivo.crear("nombre del archivo");
 
-    Imagen I;
-    I.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
+    //Imagen I;
     //I.leer("/home/manuel/Escritorio/color.ppm");
+    //I.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
     //I.invertir();
     //I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");
     //Imagen T;

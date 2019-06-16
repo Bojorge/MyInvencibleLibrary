@@ -42,6 +42,9 @@ void Imagen::leer(string nombreFichero){
     string linea;
     string nombreArchivostr;
     string texto;
+    string textoParte1;
+    string textoParte2;
+    string textoParte3;
     Archivo archivo;
     int contador=0;
     int contador2=0;
@@ -81,8 +84,11 @@ void Imagen::leer(string nombreFichero){
     }
 
     archivo.crear(nombreArchivostr);
+    archivo.crear(nombreArchivostr+"Parte1");
+    archivo.crear(nombreArchivostr+"Parte2");
+    archivo.crear(nombreArchivostr+"Parte3");
 
-    cout<<"\n archivo creado"<<endl;
+    cout<<"\n archivos creados"<<endl;
 
     getline(F, linea);
 
@@ -106,20 +112,36 @@ void Imagen::leer(string nombreFichero){
     F >> max; // maxima intensidad de color entre 0 y 255
     texto+=to_string(max)+"\n";
 
-    int contador3;
+    int division=(_ancho*_alto)/3;
     _pixels.resize(_ancho*_alto);
     for(int i=0; i<_pixels.size(); i++){
         F >> _pixels[i].r;
         F >> _pixels[i].g;
         F >> _pixels[i].b;
         textoPixels+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
+
+        /*if(i=division-1){
+            textoParte1+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
+        }
+        if(i>=division && i<division*2){
+            textoParte2+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
+        }
+        if(i>=(division*2 && i<(division*3))){
+            textoParte3+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
+        }
         if(i%_ancho == (_ancho-1)){
             textoPixels+="\n";
-        }
+        }*/
     }
     texto+=textoPixels;
     archivo.escribir(nombreArchivostr, texto);
+    archivo.escribir(nombreArchivostr+"Parte1",textoParte1);
+    archivo.escribir(nombreArchivostr+"Parte2",textoParte2);
+    archivo.escribir(nombreArchivostr+"Parte3",textoParte3);
+
 }
+
+
 
 void Imagen::escribir(std::string nombreFichero) const {
     ofstream F(nombreFichero.c_str());
@@ -143,8 +165,11 @@ void Imagen::dividir(string NombreArchivo){
     int V1;
     int V2;
     int V3;
+    int max;
     string linea;
-    int _alto, _ancho, max;
+    string textoPixeles;
+    string texto;
+    int _alto, _ancho;
 
 
     getline(F, linea);
@@ -184,11 +209,10 @@ void Imagen::dividir(string NombreArchivo){
         F >> _pixels[i].r;
         F >> _pixels[i].g;
         F >> _pixels[i].b;
-        
-        cout << (_pixels[i].r)<<"  "<<(_pixels[i].g)<<"  "<<(_pixels[i].b)<<endl;
 
+        textoPixeles+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
         if(i%_ancho == (_ancho-1)){
-            cout<<"\n";
+            textoPixeles+="\n";
         }
 
         /*
@@ -217,6 +241,8 @@ void Imagen::dividir(string NombreArchivo){
         }
 */
     }
+    texto+=textoPixeles;
+    cout<<texto;
 
     /*for(int o=0; o< V1-3; o++) {
         cout << vector1[o]<<endl;

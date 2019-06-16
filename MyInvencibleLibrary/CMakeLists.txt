@@ -3,4 +3,4 @@ project(MyInvencibleLibrary)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(MyInvencibleLibrary main.cpp RAID_5.h Disco.h Paridad.h Archivo.h Redundancia.h Compresion.h Imagen.cpp Imagen.h ArchivoBinario.h Pixel.h BinDec.h)
+add_executable(MyInvencibleLibrary main.cpp RAID_5.h Disco.h Paridad.h Archivo.h Redundancia.h Compresion.h Imagen.cpp Imagen.h ArchivoBinario.h Pixel.h BinDec.h Servidor.h Lista.h Nodo.h)

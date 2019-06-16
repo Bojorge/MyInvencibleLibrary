@@ -48,9 +48,9 @@ public:
         //convertir cada vector en string y guardarlo en txt en cada disco
     }
 
-    string READ(int codigo){
-        Paridad asdf;
-        asdf.dividir()
+    string READ(string codigo){
+        Paridad paridad;
+        
         string a;
         //if(Disco1.append(codigo))
         return a;

@@ -87,6 +87,9 @@
 		<Unit filename="/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/Archivo.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/ArchivoTexto.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/Compresion.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
@@ -112,6 +115,9 @@
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/Redundancia.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
+		<Unit filename="/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/Server.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
 		<Unit filename="/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/main.cpp">

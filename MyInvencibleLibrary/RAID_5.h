@@ -2,7 +2,6 @@
 // Created by manuel on 24/05/19.
 //
 #include <iostream>
-#include <bitset>
 #include "Lista.h"
 #include "Paridad.h"
 
@@ -12,12 +11,21 @@
 #define MYINVENCIBLELIBRARY_RAID_5_H
 
 using namespace std;
+Paridad paridad;
 class RAID_5 {
 public:
     vector<string> RAID5(vector<string> parte1,vector<string> parte2,vector<string> parte3){
         vector<string> partemp=XOR(parte1,parte2);
         vector<string> paridad=XOR(partemp,parte3);
     return paridad;
+    }
+    string RAIDString(string parte1,string parte2,string parte3){
+        vector<string> vec1=paridad.split(parte1,"~");
+        vector<string> vec2=paridad.split(parte2,"~");
+        vector<string> vec3=paridad.split(parte3,"~");
+        return (vecToString(RAID5(vec1,vec2,vec3)));
+
+
     }
     vector<string> XOR(vector<string> parte1, vector<string> parte2){
         vector<string> final;
@@ -35,9 +43,9 @@ public:
     string vecToString(vector<string> lista){
         string vTs;
         for(int i=0;i<=lista.size()-2;i++){
-            cout<<lista[i]<<endl;
+            //cout<<lista[i]<<endl;
             vTs.append(lista[i]);
-            vTs.append(",");
+            vTs.append("~");
         }
         vTs.append(lista[lista.size()-1]);
         return vTs;

@@ -15,4 +15,4 @@ add_executable(MyInvencibleLibrary
         Imagen.cpp
         Imagen.h
         Lista.h
-        Nodo.h)
+        Nodo.h Server.h ArchivoTexto.h)

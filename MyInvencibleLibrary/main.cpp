@@ -2,38 +2,46 @@
 #include "Imagen.h"
 #include "RAID_5.h"
 #include "Paridad.h"
+#include "Disco.h"
 #include <fstream>
-
+#include<stdlib.h>
+#include<time.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include "Server.h"
 using namespace std;
-RAID_5 raid;
 
 int main() {
-    vector<string> lisa={"48","15","19","14"};
-    vector<string> lisb={"76","124","43","94"};
-    vector<string> lisc={"24","179","76","2"};
+    RAID_5 raid;
+    Disco disc;
+    Disco dis2;
+    vector<string> lisa = {"48", "15", "19", "14"};
+    vector<string> lisb = {"76", "124", "43", "94"};
+    vector<string> lisc = {"24", "179", "76", "2"};
 
-    vector<string> listalarga={"48","15","19","14","76","124","43","94","24","179","76","2"};
+    vector<string> listalarga = {"48", "15", "19", "14", "76", "124", "43", "94", "24", "179", "76", "2"};
     vector<string> res;
     vector<string> res2;
-    string pruebadiv="p3,#in,800,600,255,12,15,65,15,14,15,14,15,14,17,18,19,19,18,17,15,12,14,14";
+    string pruebadiv = "p3~#in~800~600~255~19~18~15~17~167~53~83~94~75";
 
-    res=raid.RAID5(lisa,lisb,lisc);
-    res2=raid.RAID5(lisa,lisc,res);
-    //cout<<res2[0]<<" "<<res2[1]<<" "<<res2[2]<<" "<<res2[3]<<endl;
+    res = raid.RAID5(lisa, lisb, lisc);
+    res2 = raid.RAID5(lisa, lisc, res);
     vector<string> dividida;
     Paridad pasa;
-    string cacsfd;
-    cacsfd=pasa.convString("gris.ppm");
-    //cout<<"tama  "<<cacsfd<<endl;
-    vector<string> p1=pasa.dividir(pruebadiv)[2];
-    cout<<raid.vecToString(lisa)<<endl;
 
-    ofstream archivo_salida("/home/aaron/Desktop/MyInvencibleLibrary-Manuel/MyInvencibleLibrary/cmake-build-debug/DISCOVIRTUAL1/tect.txt");
-    archivo_salida <<raid.vecToString(lisa);
-    archivo_salida.close();
+    string cacsfd;
+    cacsfd = pasa.convString("gris.ppm");
+    cout<<"tama  "<<cacsfd<<endl;
+
+    vector<vector<string>> p1=pasa.dividir(pruebadiv);
+    cout << p1.size()<<"   " <<p1[1].size() <<"   "<< p1[2].size()<< endl;
+    srand(time(NULL));
+    string cod = "005";
+    //disc.WRITE(cod.append("-").append(pruebadiv));
+    cout<<"dandole"<<endl;
+    //cout<<dis2.READ(cod)<<endl;
     //cout<<cacsfd<<endl;
-    //dividida.data()->erase(0);
-    //dividida.data()->erase(0);
 
     //I.invertir();
     //I.posterizar(6);

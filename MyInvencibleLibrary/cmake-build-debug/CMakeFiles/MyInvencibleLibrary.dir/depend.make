@@ -4,10 +4,13 @@
 CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o: ../Imagen.cpp
 CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o: ../Imagen.h
 
+CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../ArchivoTexto.h
+CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Disco.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Imagen.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Lista.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Nodo.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Paridad.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../RAID_5.h
+CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Server.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../main.cpp
 

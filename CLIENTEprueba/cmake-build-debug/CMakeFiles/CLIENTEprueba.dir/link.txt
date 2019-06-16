@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/CLIENTEprueba.dir/main.cpp.o CMakeFiles/CLIENTEprueba.dir/Imagen.cpp.o  -o CLIENTEprueba 

@@ -25,6 +25,8 @@ Pixel.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h
 Archivo.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/Archivo.h
+Paridad.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h
 fstream
 -
 iostream
@@ -41,6 +43,26 @@ string
 /home/manuel/CLionProjects/MyInvencibleLibrary/string
 Pixel.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h
+vector
+-
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/Lista.h
+clocale
+-
+Nodo.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Nodo.h
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/Nodo.h
+clocale
+-
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h
+Lista.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Lista.h
+iostream
+-
+fstream
+-
 vector
 -
 

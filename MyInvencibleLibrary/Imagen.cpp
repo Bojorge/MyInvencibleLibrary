@@ -6,6 +6,7 @@
 #include "Imagen.h"
 #include "Pixel.h"
 #include "Archivo.h"
+#include "Paridad.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -39,6 +40,7 @@ Imagen::Imagen(const Imagen &other)
 
 void Imagen::leer(string nombreFichero){
     ifstream F(nombreFichero.c_str());
+    Paridad paridad;
     string linea;
     string nombreArchivostr;
     string texto;
@@ -129,11 +131,16 @@ void Imagen::leer(string nombreFichero){
         if(i>=(division*2 && i<(division*3))){
             textoParte3+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
         }
+        */
         if(i%_ancho == (_ancho-1)){
             textoPixels+="\n";
-        }*/
+        }
     }
+
     texto+=textoPixels;
+    textoParte1=paridad.dividir(textoPixels,1);
+    textoParte2=paridad.dividir(textoPixels,2);
+    textoParte3=paridad.dividir(textoPixels,3);
     archivo.escribir(nombreArchivostr, texto);
     archivo.escribir(nombreArchivostr+"Parte1",textoParte1);
     archivo.escribir(nombreArchivostr+"Parte2",textoParte2);

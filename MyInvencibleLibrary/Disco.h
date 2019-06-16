@@ -50,7 +50,7 @@ public:
 
     string READ(string codigo){
         Paridad paridad;
-        
+
         string a;
         //if(Disco1.append(codigo))
         return a;

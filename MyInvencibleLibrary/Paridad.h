@@ -28,6 +28,116 @@ public:
         fe.close();
         return strdatos;
     }
+
+
+    string dividir(string texto, int parte){
+        cout<<"tamano del texto de entrada incluyendo espacios y saltos de linea  "<<texto.length()<<endl;
+        int tamanoTexto;
+        string aDividir;
+        string division1;
+        string division2;
+        string division3;
+        int contador=0;
+        for(int i=0;i<(texto.length());i++){
+            if(texto[i]!=' ' && texto[i]!='\n'){
+                aDividir+=texto[i];
+                //cout<<contador<<" "<<texto[i]<<endl;
+            }
+            else if(texto[i]==' '){
+                aDividir+=",";
+                contador+=1;
+            }
+
+
+        }
+        for(int i=0;i<aDividir.length();i++){
+            if( i==(aDividir.length())-1){
+                break;
+            }
+            else if(aDividir[i]!=',' && i<(aDividir.length()/3)){
+                division1+=aDividir[i];
+            }
+            else if(aDividir[i]==',' && i<(aDividir.length()/3)){
+                division1+=",";
+            }
+
+            else if(aDividir[i]!=',' && i>=(aDividir.length()/3) && i<(aDividir.length()/3)*2){
+                division2+=aDividir[i];
+
+            }
+            else if(aDividir[i]==',' && i>=(aDividir.length()/3) && i<(aDividir.length()/3)*2){
+                division2+=",";
+            }
+
+            else if(aDividir[i]!=',' && i>=((aDividir.length()/3)*2)){
+                division3+=aDividir[i];
+
+            }
+            else if(aDividir[i]==',' && i>=((aDividir.length()/3)*2)){
+                division3+=",";
+            }
+
+
+        }
+
+        int contadorZ=0;
+        int contadorY=0;
+        int contadorX=0;
+        for(int i=0;i<(division2.length());i++) {
+            if (division2[i] != ',') {
+
+            } else if (division2[i] == ',') {
+                contadorY += 1;
+            }
+        }
+        for(int i=0;i<(division1.length());i++) {
+            if (division1[i] != ',') {
+
+            } else if (division1[i] == ',') {
+                contadorX += 1;
+            }
+        }
+        for(int i=0;i<(division3.length());i++) {
+            if (division3[i] != ',') {
+
+            } else if (division3[i] == ',') {
+                contadorZ += 1;
+            }
+        }
+
+
+
+        cout<<"Cantidad de pixeles  "<<contador<<endl;
+        cout<<"TOTAL  "<<aDividir.length()<<endl;
+        cout<<"real  "<<division1.length()+division2.length()+division3.length()<<endl;
+        cout<<"Division 1  "<<division1<<endl;
+        cout<<"Division 2  "<<division2<<endl;
+        cout<<"Division 3  "<<division3<<endl;
+        cout<<"Cantidad de pixeles en la division 2  "<<contadorX<<endl;
+        cout<<division1.length()<<endl;
+        cout<<"X " <<contadorX<<endl;
+        cout<<"Y "<<contadorY<<endl;
+        cout<<"Z "<<contadorZ<<endl;
+        int suma=0;
+        suma+= contadorZ+contadorY+contadorX;
+        cout<<"SUMA  "<<suma<<endl;
+
+        if(parte==1){
+            cout<<division1<<endl;
+            return division1;
+        }
+        if(parte==2){
+            cout<<division2<<endl;
+            return division2;
+        }
+        if(parte==3){
+            cout<<division3<<endl;
+            return division3;
+        }
+
+    }
+
+    /*
     vector<vector<string>> dividir(string texta){
         vector<string> datos;
         vector<vector<string>> div3;
@@ -58,8 +168,13 @@ public:
         div3.push_back(v1);
         div3.push_back(v2);
         div3.push_back(v3);
+
+        for(int i=0;i<=v1.size();i++){
+            cout<<v1[i]<<endl;
+        }
         return div3;
     }
+*/
 
     vector<string> split (string s, string delimiter) {
         size_t pos_start = 0, pos_end, delim_len = delimiter.length();

@@ -42,7 +42,7 @@ public:
         // print buffer which contains the client contents
         printf("cliente envia >>> : %s\t");
         if (strncmp("001", buff, 4) == 0) {
-            BuscarEnDisco("001");
+            //BuscarEnDisco("001");
         }
     }
 

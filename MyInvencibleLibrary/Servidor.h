@@ -34,7 +34,7 @@ private:
 
 public:
 
-    void leerImagen(int sockfd){
+    bool leerImagen(int sockfd){
         bzero(buff, MAX);
         // read the message from client and copy it in buffer
         read(sockfd, buff, sizeof(buff));
@@ -42,14 +42,13 @@ public:
             printf("\n Se recibio el codigo 001 \n");
             printf("\n se enviara la imagen 001...\n");
             write(sockfd, "tome", sizeof(buff));
-            close(sockfd);
-            exit(-1);
+            return true;
         }
         else {
             // print buffer which contains the client contents
             printf("cliente envia >>> : %s\t");
+            return false;
         }
-
     }
 
     void enviarImagen(int sockfd){
@@ -95,9 +94,12 @@ public:
         // infinite loop for chat
         for (;;) {
 
-            leerImagen(sockfd);
+            if(leerImagen(sockfd)){
+                break;
+            }
 
             enviarImagen(sockfd);
+
 
             if(terminarConexion()){
                 break;
@@ -148,6 +150,7 @@ public:
 
         // Function for chatting between client and server
         puerto(connfd);
+
 
         // After chatting close the socket
         close(sockfd);

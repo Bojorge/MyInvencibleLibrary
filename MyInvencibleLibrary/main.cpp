@@ -22,6 +22,7 @@ int main() {
 
     Servidor servidor;
     servidor.iniciar();
+    cout<<"\n *** pasa a la siguiente linea *** \n";
 
     //BinDec convertir;
     //convertir.binAdeci(1111);

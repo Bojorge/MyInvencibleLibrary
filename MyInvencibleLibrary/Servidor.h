@@ -38,13 +38,18 @@ public:
         bzero(buff, MAX);
         // read the message from client and copy it in buffer
         read(sockfd, buff, sizeof(buff));
-        // print buffer which contains the client contents
-        //printf("cliente envia >>> : %s\t");
-        if (strncmp("001", buff, 4) == 0) {
-
-            write(sockfd, "001 papiiii", sizeof(buff));
-
+        if (strncmp("001", buff, 3) == 0) {
+            printf("\n Se recibio el codigo 001 \n");
+            printf("\n se enviara la imagen 001...\n");
+            write(sockfd, "tome", sizeof(buff));
+            close(sockfd);
+            exit(-1);
         }
+        else {
+            // print buffer which contains the client contents
+            printf("cliente envia >>> : %s\t");
+        }
+
     }
 
     void enviarImagen(int sockfd){
@@ -91,12 +96,14 @@ public:
         for (;;) {
 
             leerImagen(sockfd);
+
             enviarImagen(sockfd);
 
             if(terminarConexion()){
                 break;
             }
         }
+
     };
 
 

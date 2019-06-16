@@ -31,7 +31,6 @@ public:
 
 
     string dividir(string texto, int parte){
-        cout<<"tamano del texto de entrada incluyendo espacios y saltos de linea  "<<texto.length()<<endl;
         int tamanoTexto;
         string aDividir;
         string division1;
@@ -106,22 +105,20 @@ public:
         }
 
 
-
+/*
         cout<<"Cantidad de pixeles  "<<contador<<endl;
-        cout<<"TOTAL  "<<aDividir.length()<<endl;
-        cout<<"real  "<<division1.length()+division2.length()+division3.length()<<endl;
         cout<<"Division 1  "<<division1<<endl;
         cout<<"Division 2  "<<division2<<endl;
         cout<<"Division 3  "<<division3<<endl;
-        cout<<"Cantidad de pixeles en la division 2  "<<contadorX<<endl;
-        cout<<division1.length()<<endl;
-        cout<<"X " <<contadorX<<endl;
-        cout<<"Y "<<contadorY<<endl;
-        cout<<"Z "<<contadorZ<<endl;
+        cout<<"Cantidad de pixeles en la division 1  "<<contadorX<<endl;
+        cout<<"Cantidad de pixeles en la division 2  "<<contadorY<<endl;
+        cout<<"Cantidad de pixeles en la division 3  "<<contadorZ<<endl;
         int suma=0;
         suma+= contadorZ+contadorY+contadorX;
-        cout<<"SUMA  "<<suma<<endl;
+        cout<<"SUMA de las 3 divisiones "<<suma<<endl;
+*/
 
+        cout<<"resultado "<<parte<<endl;
         if(parte==1){
             cout<<division1<<endl;
             return division1;

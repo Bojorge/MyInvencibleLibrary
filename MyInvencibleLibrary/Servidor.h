@@ -34,19 +34,20 @@ private:
 
 public:
 
-    void leerPaquete(int sockfd){
+    void leerImagen(int sockfd){
         bzero(buff, MAX);
-
         // read the message from client and copy it in buffer
         read(sockfd, buff, sizeof(buff));
         // print buffer which contains the client contents
-        printf("cliente envia >>> : %s\t");
+        //printf("cliente envia >>> : %s\t");
         if (strncmp("001", buff, 4) == 0) {
-            //BuscarEnDisco("001");
+
+            write(sockfd, "001 papiiii", sizeof(buff));
+
         }
     }
 
-    void enviarPaquete(int sockfd){
+    void enviarImagen(int sockfd){
         bzero(buff, MAX);
         printf("Enviar al cliente >>> : ", buff);
         bzero(buff, MAX);
@@ -54,8 +55,26 @@ public:
         // copy server message in the buffer
         while ((buff[n++] = getchar()) != '\n');
         write(sockfd, buff, sizeof(buff));
+    }
 
+    void enviarImagen(int sockfd,string texto){
+        bzero(buff, MAX);
+       int tamano=texto.length();
+       char txt[tamano];
+       for(int i=0;i<tamano;i++){
+           txt[i]=texto[i];
+       }
+        for(int i=0;i<tamano;i++){
+            buff[i]=txt[i];
+        }
+        //strcpy(x,texto.c_str());
+        printf("Enviar al cliente >>> : ", buff);
+        bzero(buff, MAX);
 
+        int n=0;
+        // copy server message in the buffer
+        while ((buff[n++] = getchar()) != '\n');
+        write(sockfd, buff, sizeof(buff));
     }
 
     bool terminarConexion(){
@@ -71,8 +90,8 @@ public:
         // infinite loop for chat
         for (;;) {
 
-            leerPaquete(sockfd);
-            enviarPaquete(sockfd);
+            leerImagen(sockfd);
+            enviarImagen(sockfd);
 
             if(terminarConexion()){
                 break;
@@ -126,7 +145,10 @@ public:
         // After chatting close the socket
         close(sockfd);
     };
+
+
 };
+
 
 
 #endif //MYINVENCIBLELIBRARY_SERVIDOR_H

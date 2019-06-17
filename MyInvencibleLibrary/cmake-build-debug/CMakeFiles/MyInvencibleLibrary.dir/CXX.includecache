@@ -103,6 +103,8 @@ sys/socket.h
 -
 Disco.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/Disco.h
+Paridad.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h
 
 /home/manuel/CLionProjects/MyInvencibleLibrary/main.cpp
 iostream

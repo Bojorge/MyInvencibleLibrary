@@ -17,21 +17,23 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include "Disco.h"
+#include "Paridad.h"
 
 #define MAX 800
-#define PORT 8080
+#define PORT 8085
 #define SA struct sockaddr
 
 
 
 class Servidor {
-
+Paridad paridad;
 private:
     Disco disco;
     int sockfd, connfd;
     unsigned int len;
     struct sockaddr_in servaddr, cli;
     char buff[MAX];
+    string readed;
 
 
 public:
@@ -44,15 +46,24 @@ public:
         read(sockfd, buff, sizeof(buff));
         printf("\n ... leyendo ...  \n");
         //char buffer[500];
-        string o(buff);
+        //string o(buff);
+        string o=buff;
         //strcpy(buffer, o.c_str());
-        cout<<"tamano del buff "<<o.size()<<endl;
+        cout<<"tamano del buff "<< sizeof(buff)<<endl;
+        cout<<"tamano del string "<<o.size()<<endl;
         cout<<"valor de O "<<o<<endl;
+        string cod;
+
+        cout<<"tamano del string "<<cod<<endl;
+
         if(o.size()==4){
+            cod+=o[0];
+            cod+=o[1];
+            cod+=o[2];
         //if (strncmp(buffer, buff, 3) == 0) {
             printf("\n Se recibio el codigo  \n");
             char pixeles [500];
-            string x=disco.READ(o);
+            string x=disco.READ(cod);
             strcpy(pixeles, x.c_str());
             write(sockfd, pixeles, sizeof(buff));
             //terminarConexion();

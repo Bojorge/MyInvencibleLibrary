@@ -123,10 +123,15 @@ public:
         string ty;
 
         //Se agrega
-        string archivo1=Disco1.append(codigo);
-        string archivo2=Disco2.append(codigo);
-        string archivo3=Disco3.append(codigo);
-        string archivop=Disco4.append(codigo);
+        string archivo1=Disco1;
+        string archivo2=Disco2;
+        string archivo3=Disco3;
+        string archivop=Disco4;
+        archivo1.append(codigo);
+        archivo2.append(codigo);
+        archivo3.append(codigo);
+        archivop.append(codigo);
+
 
         //Buscar la primera parte en todos los discos
         string parte=archivo1;
@@ -157,8 +162,11 @@ public:
                 }
                 //cout<<"buscando archivo 1"<<endl;
                 string strtemp=guardar;
-                ifstream fe1(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe1;
+                fe1.open(strtemp.append(to_string(contArch).append(".txt")));
+                cout<<"buscando "<<strtemp<<endl;
                 strtemp="";
+
                 if(fe1.good()) {
                     fe1>>parteS1;
                     vector<string> p1st=paridad.split(parteS1,"~");
@@ -191,7 +199,8 @@ public:
                 }
                 //cout<<"buscando archivo 2"<<endl;
                 string strtemp=guardar;
-                ifstream fe2(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe2;
+                fe2.open(strtemp.append(to_string(contArch).append(".txt")));
                 strtemp="";
                 if(fe2.good()) {
                     fe2>>parteS2;
@@ -217,7 +226,8 @@ public:
                 }
                 //cout<<"buscando archivo 3"<<endl;
                 string strtemp=guardar;
-                ifstream fe3(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe3;
+                fe3.open(strtemp.append(to_string(contArch).append(".txt")));
                 strtemp="";
                 if(fe3.good()) {
                     fe3>>parteS3;
@@ -243,7 +253,8 @@ public:
                 }
                 //cout<<"buscando archivo 4"<<endl;
                 string strtemp=guardar;
-                ifstream fe4(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe4;
+                fe4.open(strtemp.append(to_string(contArch).append(".txt")));
                 strtemp="";
                 if(fe4.good()) {
                     fe4>>parteS4;

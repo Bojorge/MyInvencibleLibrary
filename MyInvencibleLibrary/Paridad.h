@@ -14,14 +14,15 @@ using namespace std;
 
 class Paridad {
 public:
+    //funcion que convierte una imagen a un string para manejarlo en la comunicacion
     string imgTostring(string imagen) { //Imagen tiene el string entero de la direccion de la imagen
         char cadena[128];
         string strdatos;
-        ifstream fe(imagen);   //Se
+        ifstream fe(imagen);  // se abre la imagen con la direccion asignada
         while (!fe.eof()) {
-            fe >> cadena;
+            fe >> cadena; //se lee cada linea de el archivo
             string numdato=cadena;
-            strdatos.append(numdato);
+            strdatos.append(numdato); // se agrega la linea al string
             strdatos.append("~");
         }
         fe.close();
@@ -30,12 +31,13 @@ public:
         nums.pop_back();
         return vecToString(nums);
     }
+    //funcion que divide un string en 3 diferentes pares para almacenarlas en cada disco
     vector<vector<string>> dividir(string texta){
         vector<string> datos;
         vector<vector<string>> div3;
-        vector<string> division=split (texta,"in~");
+        vector<string> division=split (texta,"in~"); // se eliminan los primeros elementos de la imagen
         string ret=division[1];
-        vector<string> separados=split(ret,"~");
+        vector<string> separados=split(ret,"~"); // se divide el archivo en partes
         string tX=separados[0];
         string tY=separados[1];
         cout<<tX<<"   "<<tY<<endl;
@@ -50,14 +52,13 @@ public:
         int intervalo1=cantEntre3;
         int intervalo2=cantEntre3*2;
         int intervalo3=datos.size()-1;
-        for(int a=0;a<=intervalo1-1;a++){
+        for(int a=0;a<=intervalo1-1;a++){//se divide la primera parte del archivo entero
             v1.push_back(datos[a]);
-            cout<<"metiendo en la primera parte"<<datos[a]<<endl;
         }
-        for(int b=intervalo1;b<=intervalo2-1;b++){
+        for(int b=intervalo1;b<=intervalo2-1;b++){ //se divide la segunda parte del archivo entero
             v2.push_back(datos[b]);
         }
-        for(int c=intervalo2;c<=intervalo3;c++){
+        for(int c=intervalo2;c<=intervalo3;c++){//se divide la tercera parte del archivo entero
             v3.push_back(datos[c]);
         }
         v1.push_back(tX);
@@ -65,10 +66,10 @@ public:
         div3.push_back(v1);
         div3.push_back(v2);
         div3.push_back(v3);
-        cout<<"tamanios antes de terminar"<<v1.size() <<"  " <<v2.size() <<"  " <<v3.size() <<endl;
 
         return div3;
     }
+    //Funcion que le ingresa un string para convertirlo a una imagen
     void strTimg(string imagen,string nombre){
         nombre.append(".ppm");
         string direccion="/home/aaron/Desktop/";
@@ -105,8 +106,6 @@ public:
         vTs.append(lista[lista.size()-1]);
         return vTs;
     }
-
-
 };
 
 #endif //MYINVENCIBLELIBRARY_PARIDAD_H

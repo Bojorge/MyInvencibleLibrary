@@ -138,7 +138,7 @@ void Imagen::leer(string nombreFichero){
     }
 
     Imagen x;
-    x.escribirApartirDeTexto("/home/manuel/Escritorio/ImagenEscrita.ppm",textoPixels);
+    x.escribirApartirDeTexto("/home/manuel/Escritorio/ImagenEscrita.ppm",textoPixels,_ancho, _alto);
 
     texto+=textoPixels;
     textoParte1=paridad.dividir(textoPixels,1);
@@ -170,17 +170,22 @@ void Imagen::escribir(std::string nombreFichero) const {
     }
 }
 
-void Imagen::escribirApartirDeTexto(std::string nombreFichero,std::string pixeles) const {
+void Imagen::escribirApartirDeTexto(std::string nombreFichero,std::string pixeles, int _ancho, int _alto) const {
     ofstream F(nombreFichero.c_str());
     F << "P3" << endl;
     F << "# escrito para el proyecto 3" << endl;
     F << _ancho << ' ' << _alto << endl;
     F << 255 << endl;
 
-    for(int s=0;s<pixeles.length();s++){
-
+    for(int s=0;s<pixeles.length()-2;s++){
+            F << pixeles[s];
+        if(s%_ancho == (_ancho-1)){
+            F << endl;
+        }
     }
 
+
+    /*
     for(int i=0; i<_pixels.size(); i++){
         F << _pixels[i].r << ' ';
         F << _pixels[i].g << ' ';
@@ -188,7 +193,7 @@ void Imagen::escribirApartirDeTexto(std::string nombreFichero,std::string pixele
         if(i%_ancho == (_ancho-1)){
             F << endl;
         }
-    }
+    }*/
 }
 
 void Imagen::dividir(string NombreArchivo){

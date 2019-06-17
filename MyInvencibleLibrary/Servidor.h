@@ -80,7 +80,7 @@ public:
             //printf("cliente envia >>> : %s\t");
             return true;
         }
-
+        return true;
     }
     void enviarImagen(int sockfd){
         bzero(buff, MAX);

@@ -23,10 +23,9 @@ using namespace std;
 
 int main() {
 
-    Servidor servidor;
-        servidor.iniciar();
-
-    cout<<"\n *** pasa a la siguiente linea *** \n";
+    //Servidor servidor;
+    //servidor.iniciar();
+    //cout<<"\n *** pasa a la siguiente linea *** \n";
 
     //BinDec convertir;
     //convertir.binAdeci(1111);
@@ -35,8 +34,8 @@ int main() {
     //Archivo archivo;
     //archivo.crear("nombre del archivo");
 
-    //Imagen I;
-    //I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/Imagenes de prueba/pixels.ppm");
+    Imagen I;
+    I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/Imagenes de prueba/pixels.ppm");
     //I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/homero.txt");
     //I.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
     //I.invertir();

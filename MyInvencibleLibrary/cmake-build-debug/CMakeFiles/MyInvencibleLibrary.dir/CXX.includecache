@@ -38,6 +38,28 @@ fstream
 vector
 -
 
+/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.cpp
+string
+/home/manuel/CLionProjects/MyInvencibleLibrary/string
+Imagen.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
+Pixel.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h
+Archivo.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Archivo.h
+Paridad2.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad2.h
+fstream
+-
+iostream
+-
+sstream
+-
+cmath
+-
+cstring
+-
+
 /home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
 string
 /home/manuel/CLionProjects/MyInvencibleLibrary/string
@@ -62,6 +84,16 @@ Lista.h
 iostream
 -
 fstream
+-
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad2.h
+Lista.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Lista.h
+iostream
+-
+fstream
+-
+vector
 -
 
 /home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h

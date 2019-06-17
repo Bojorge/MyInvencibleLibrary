@@ -20,7 +20,7 @@
 #include "Paridad.h"
 
 #define MAX 800
-#define PORT 8085
+#define PORT 8080
 #define SA struct sockaddr
 
 
@@ -44,6 +44,7 @@ public:
         printf("\n ... leyendo ...  \n");
         // read the message from client and copy it in buffer
         read(sockfd, buff, sizeof(buff));
+
         printf("\n ... leyendo ...  \n");
         //char buffer[500];
         //string o(buff);
@@ -66,7 +67,7 @@ public:
             string x=disco.READ(cod);
             strcpy(pixeles, x.c_str());
             write(sockfd, pixeles, sizeof(buff));
-            //terminarConexion();
+            bzero(buff, MAX);
             return true;
 
         }
@@ -75,14 +76,12 @@ public:
             cout<<"valor de O "<<o<<endl;
             disco.WRITE(o);
             write(sockfd, " ok ", sizeof(buff));
-            //terminarConexion();
-            // print buffer which contains the client contents
+            bzero(buff, MAX);
             //printf("cliente envia >>> : %s\t");
             return true;
         }
 
     }
-
     void enviarImagen(int sockfd){
         bzero(buff, MAX);
         printf("Enviar al cliente >>> : ", buff);
@@ -138,16 +137,15 @@ public:
 
     };
 
-
-    int iniciar() {
+    int reiniciar(){
 
         // socket create and verification
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
         if (sockfd == -1) {
-            printf("creacion del socket fallida ...\n");
+            printf("\n reinicio de conexion:  *** fallido ***\n");
             exit(0);
         } else
-            printf("Socket exitosamente creado ...\n");
+            printf("\n reinicio exitoso \n");
         bzero(&servaddr, sizeof(servaddr));
 
         // assign IP, PORT
@@ -167,7 +165,7 @@ public:
             printf("Listen failed...\n");
             exit(0);
         } else
-            printf("Server listening..\n");
+            printf("\n Servidor escuchando ...\n");
         len = sizeof(cli);
 
         // Accept the data packet from client and verification
@@ -184,6 +182,69 @@ public:
 
         // After chatting close the socket
         close(sockfd);
+        sleep(2);
+        iniciar();
+    }
+
+    int iniciar() {
+
+        // socket create and verification
+        sockfd = socket(AF_INET, SOCK_STREAM, 0);
+        if (sockfd == -1) {
+            printf("creacion del socket fallida ...\n");
+            close(sockfd);
+            sleep(2);
+            reiniciar();
+            exit(0);
+        } else
+            printf("Socket exitosamente creado ...\n");
+        bzero(&servaddr, sizeof(servaddr));
+
+        // assign IP, PORT
+        servaddr.sin_family = AF_INET;
+        servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+        servaddr.sin_port = htons(PORT);
+
+        // Binding newly created socket to given IP and verification
+        if ((bind(sockfd, (SA *) &servaddr, sizeof(servaddr))) != 0) {
+            printf("Fallo el enlace al socket ...\n");
+            close(sockfd);
+            sleep(2);
+            reiniciar();
+            exit(0);
+        } else
+            printf("Socket exitosamente enlazado..\n");
+
+        // Now server is ready to listen and verification
+        if ((listen(sockfd, 5)) != 0) {
+            printf("Listen failed...\n");
+            close(sockfd);
+            sleep(2);
+            reiniciar();
+            exit(0);
+        } else
+            printf("\n Servidor escuchando ...\n");
+        len = sizeof(cli);
+
+        // Accept the data packet from client and verification
+        connfd = accept(sockfd, (SA *) &cli, &len);
+        if (connfd < 0) {
+            printf("server acccept failed...\n");
+            close(sockfd);
+            sleep(2);
+            reiniciar();
+            exit(0);
+        } else
+            printf("\n El servidor acepta al cliente ...\n");
+
+        // Function for chatting between client and server
+        puerto(connfd);
+
+
+        // After chatting close the socket
+        close(sockfd);
+        sleep(2);
+        reiniciar();
     };
 
 

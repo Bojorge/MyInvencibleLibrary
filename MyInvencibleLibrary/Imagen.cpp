@@ -137,8 +137,8 @@ void Imagen::leer(string nombreFichero){
         }
     }
 
-    //Imagen x;
-    //x.escribirApartirDeTexto("/home/manuel/Escritorio/ImagenEscrita.ppm");
+    Imagen x;
+    x.escribirApartirDeTexto("/home/manuel/Escritorio/ImagenEscrita.ppm",textoPixels);
 
     texto+=textoPixels;
     textoParte1=paridad.dividir(textoPixels,1);

@@ -24,9 +24,8 @@ using namespace std;
 int main() {
 
     Servidor servidor;
-    while(true) {
         servidor.iniciar();
-    }
+
     cout<<"\n *** pasa a la siguiente linea *** \n";
 
     //BinDec convertir;

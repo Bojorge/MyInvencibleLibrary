@@ -6,7 +6,7 @@
 #include "Imagen.h"
 #include "Pixel.h"
 #include "Archivo.h"
-#include "Paridad.h"
+#include "Paridad2.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -40,7 +40,7 @@ Imagen::Imagen(const Imagen &other)
 
 void Imagen::leer(string nombreFichero){
     ifstream F(nombreFichero.c_str());
-    Paridad paridad;
+    Paridad2 paridad;
     string linea;
     string nombreArchivostr;
     string texto;
@@ -137,6 +137,9 @@ void Imagen::leer(string nombreFichero){
         }
     }
 
+    //Imagen x;
+    //x.escribirApartirDeTexto("/home/manuel/Escritorio/ImagenEscrita.ppm");
+
     texto+=textoPixels;
     textoParte1=paridad.dividir(textoPixels,1);
     textoParte2=paridad.dividir(textoPixels,2);
@@ -156,6 +159,27 @@ void Imagen::escribir(std::string nombreFichero) const {
     F << "# escrito para el proyecto 3" << endl;
     F << _ancho << ' ' << _alto << endl;
     F << 255 << endl;
+
+    for(int i=0; i<_pixels.size(); i++){
+        F << _pixels[i].r << ' ';
+        F << _pixels[i].g << ' ';
+        F << _pixels[i].b << ' ';
+        if(i%_ancho == (_ancho-1)){
+            F << endl;
+        }
+    }
+}
+
+void Imagen::escribirApartirDeTexto(std::string nombreFichero,std::string pixeles) const {
+    ofstream F(nombreFichero.c_str());
+    F << "P3" << endl;
+    F << "# escrito para el proyecto 3" << endl;
+    F << _ancho << ' ' << _alto << endl;
+    F << 255 << endl;
+
+    for(int s=0;s<pixeles.length();s++){
+
+    }
 
     for(int i=0; i<_pixels.size(); i++){
         F << _pixels[i].r << ' ';

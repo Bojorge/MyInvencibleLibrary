@@ -3,6 +3,9 @@
 #include "Archivo.h"
 #include "BinDec.h"
 #include "Servidor.h"
+#include "Paridad.h"
+#include "Disco.h"
+#include "RAID_5.h"
 
 //Servidor
 #include <iostream>
@@ -21,7 +24,8 @@ using namespace std;
 int main() {
 
     Servidor servidor;
-    servidor.iniciar();
+        servidor.iniciar();
+
     cout<<"\n *** pasa a la siguiente linea *** \n";
 
     //BinDec convertir;
@@ -33,6 +37,7 @@ int main() {
 
     //Imagen I;
     //I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/Imagenes de prueba/pixels.ppm");
+    //I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/homero.txt");
     //I.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
     //I.invertir();
     //I.escribir("/home/manuel/Escritorio/ImagenEscrita.ppm");

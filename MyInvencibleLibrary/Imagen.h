@@ -36,6 +36,8 @@ public:
 
     void escribir(std::string nombreFichero) const;
 
+    void escribirApartirDeTexto(std::string nombreFichero,std::string pixeles) const;
+
     Imagen cortar(int izq, int arr, int der, int aba) const;
 
     void pegar(const Imagen& I, int izq, int arr);

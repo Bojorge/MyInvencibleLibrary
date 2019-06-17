@@ -16,8 +16,9 @@
 #include <zconf.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include "Disco.h"
 
-#define MAX 80
+#define MAX 800
 #define PORT 8080
 #define SA struct sockaddr
 
@@ -26,6 +27,7 @@
 class Servidor {
 
 private:
+    Disco disco;
     int sockfd, connfd;
     unsigned int len;
     struct sockaddr_in servaddr, cli;
@@ -35,20 +37,39 @@ private:
 public:
 
     bool leerImagen(int sockfd){
+        printf("\n ... leyendo ...  \n");
         bzero(buff, MAX);
+        printf("\n ... leyendo ...  \n");
         // read the message from client and copy it in buffer
         read(sockfd, buff, sizeof(buff));
-        if (strncmp("001", buff, 3) == 0) {
-            printf("\n Se recibio el codigo 001 \n");
-            printf("\n se enviara la imagen 001...\n");
-            write(sockfd, "tome", sizeof(buff));
+        printf("\n ... leyendo ...  \n");
+        //char buffer[500];
+        string o(buff);
+        //strcpy(buffer, o.c_str());
+        cout<<"tamano del buff "<<o.size()<<endl;
+        cout<<"valor de O "<<o<<endl;
+        if(o.size()==4){
+        //if (strncmp(buffer, buff, 3) == 0) {
+            printf("\n Se recibio el codigo  \n");
+            char pixeles [500];
+            string x=disco.READ(o);
+            strcpy(pixeles, x.c_str());
+            write(sockfd, pixeles, sizeof(buff));
+            //terminarConexion();
+            return true;
+
+        }
+
+        if(o.size()>4) {
+            cout<<"valor de O "<<o<<endl;
+            disco.WRITE(o);
+            write(sockfd, " ok ", sizeof(buff));
+            //terminarConexion();
+            // print buffer which contains the client contents
+            //printf("cliente envia >>> : %s\t");
             return true;
         }
-        else {
-            // print buffer which contains the client contents
-            printf("cliente envia >>> : %s\t");
-            return false;
-        }
+
     }
 
     void enviarImagen(int sockfd){
@@ -79,14 +100,11 @@ public:
         // copy server message in the buffer
         while ((buff[n++] = getchar()) != '\n');
         write(sockfd, buff, sizeof(buff));
+
     }
 
     bool terminarConexion(){
-        if (strncmp("exit", buff, 4) == 0) {
-            printf("Server Finalizado...\n");
-            return true;
-        }
-        return false;
+        return true;
     }
 
 
@@ -96,9 +114,10 @@ public:
 
             if(leerImagen(sockfd)){
                 break;
-            }
+            };
 
-            enviarImagen(sockfd);
+
+            //enviarImagen(sockfd);
 
 
             if(terminarConexion()){

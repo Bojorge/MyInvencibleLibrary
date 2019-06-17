@@ -22,6 +22,22 @@ iostream
 cmath
 -
 
+/home/manuel/CLionProjects/MyInvencibleLibrary/Disco.h
+Paridad.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h
+RAID_5.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/RAID_5.h
+stdlib.h
+-
+time.h
+-
+iostream
+-
+fstream
+-
+vector
+-
+
 /home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
 string
 /home/manuel/CLionProjects/MyInvencibleLibrary/string
@@ -30,11 +46,37 @@ Pixel.h
 vector
 -
 
+/home/manuel/CLionProjects/MyInvencibleLibrary/Lista.h
+clocale
+-
+Nodo.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Nodo.h
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/Nodo.h
+clocale
+-
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h
+Lista.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Lista.h
+iostream
+-
+fstream
+-
+
 /home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h
 cmath
 -
 Imagen.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/Imagen.h
+
+/home/manuel/CLionProjects/MyInvencibleLibrary/RAID_5.h
+iostream
+-
+Lista.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Lista.h
+Paridad.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h
 
 /home/manuel/CLionProjects/MyInvencibleLibrary/Servidor.h
 zconf.h
@@ -59,6 +101,8 @@ sys/types.h
 -
 sys/socket.h
 -
+Disco.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Disco.h
 
 /home/manuel/CLionProjects/MyInvencibleLibrary/main.cpp
 iostream
@@ -71,6 +115,12 @@ BinDec.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/BinDec.h
 Servidor.h
 /home/manuel/CLionProjects/MyInvencibleLibrary/Servidor.h
+Paridad.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h
+Disco.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/Disco.h
+RAID_5.h
+/home/manuel/CLionProjects/MyInvencibleLibrary/RAID_5.h
 iostream
 -
 netdb.h

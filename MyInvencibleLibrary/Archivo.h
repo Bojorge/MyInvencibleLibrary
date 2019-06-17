@@ -69,6 +69,26 @@ public:
 
     };
 
+    string leerYretornarTexto(string nombreArchivo){
+
+        ifstream archivo;
+        string texto;
+        //archivo.open("datosServer.txt",ios::in);
+        archivo.open(nombreArchivo,ios::in);
+
+        if(archivo.fail()){
+            cout<<"No se pudo abrir el archivo";
+            exit(1);
+        }
+
+        while(!archivo.eof()){// mientras no se haya terminado el archivo
+            getline(archivo,texto);
+            cout<<texto<<endl;
+        }
+        archivo.close();
+
+    };
+
 };
 
 

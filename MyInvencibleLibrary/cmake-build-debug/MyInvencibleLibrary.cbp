@@ -114,6 +114,9 @@
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Paridad2.h">
+			<Option target="MyInvencibleLibrary"/>
+		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/MyInvencibleLibrary/Pixel.h">
 			<Option target="MyInvencibleLibrary"/>
 		</Unit>

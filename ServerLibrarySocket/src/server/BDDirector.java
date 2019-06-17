@@ -3,6 +3,8 @@ package server;
 import java.util.ArrayList;
 import BaseDatos.*;
 
+// Clase que controla la comunicacion entre el JAR BaseDATOSDIY
+// y el proyecto del serverLibrarySocket
 public class BDDirector {
 
 	BDCliente cliente;
@@ -28,25 +30,32 @@ public class BDDirector {
 		return list;
 	}
 	
+	//Funcion que por medio de una id, le pide a la base de datos
+	//que retorne una imagen con la misma id
 	public Imagen obtenerImagen(String id) {
 		Imagen img= coleccion.find("id",id);
 		return img;	
 	}
-	
+	//Funcion que le indica a la base de datos que guarde una imgen
+	//con lo datos ingresados
 	public void guardarImagen(Imagen img) {
+		img.setDatos("0001001");
 		coleccion.insert(img);
 	}
-	
+	//Funcion que sustituye los datos de una imagen con un id espe-
+	//cifico, por uno ingresados, en la base de datos
 	public void renovarImagen(String id, Imagen img) {
 		Imagen buscar = coleccion.buscar("id",id);
 		coleccion.actualizar(buscar, img);
 	}
-	
+	//Funcion que le pide a la base de datos que elimine una imagen 
+	//con un id indicado
 	public void borrarImagen(String id) {
 		Imagen buscarYBorar = coleccion.buscar("id", id);
 		coleccion.encontrarYBorrar(buscarYBorar);
 	}
-	
+	//Fucion que deserializa un archivo en formato JSON
+	//Lo convierte a un a lista de imagenes
 	public ArrayList<Imagen> deserializador(String json) {
 		ArrayList<Imagen> coleccion2 = new ArrayList<Imagen>();
 		String id = ""; String pe = "";String dato = "";
@@ -75,6 +84,8 @@ public class BDDirector {
 		}
 		return coleccion2;
 	}
+	//Funcion qye dada una lista de imagenes, convierte los datos en ella
+	//por un string en formato JSON
 	public String serializador(ArrayList<Imagen> list) {
 		String TodasImagenes = "";
 		ArrayList<Imagen> lista1 = list;
@@ -84,7 +95,7 @@ public class BDDirector {
 		TodasImagenes = TodasImagenes + serializarImagen(lista1.get(lista1.size()-1));		
 		return TodasImagenes;
 	}
-	
+	//funcion que serializa en formato JSON un objeto de tipo imagen
 	public String serializarImagen(Imagen img) {
 		String string = 
 				"{\"id\": "  + img.getId() + "," +
@@ -96,6 +107,7 @@ public class BDDirector {
 				"\"datos\": " + img.getDatos() + " }";
 		return string;
 	}
+	//Funcion dado un string en formato JSON, retorna una imagen
 	public Imagen deserializarImagen(String str) {
 		String id = ""; String pe = "";String dato = "";
 		String ano = ""; String autor = "";String des = "";
@@ -117,7 +129,7 @@ public class BDDirector {
 		Imagen g = new Imagen(id,nom,ano,autor,pe,des,dato);
 		return g;
 	}
-	
+	//Funcion que cierra la base de datos y la coneccion con esta
 	public void cerrarBD() {
 		coleccion.cerrarBD();
 	}

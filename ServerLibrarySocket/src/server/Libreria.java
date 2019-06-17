@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import BaseDatos.Imagen;
 
+//Clase que comunica el BD Director, la clase 
+//coneccionC y la clase RAID
 public class Libreria {
 	
 	private static Libreria INSTANCE = new Libreria();
@@ -14,7 +16,9 @@ public class Libreria {
 	public static Libreria obtenerLibreria() {
 		return INSTANCE;
 	}
-	
+	//Funcion que pide todos los datos que esten en la base de datos
+	//a cada uno de los datos, le pide al RAID el valor real de los
+	//Datos de cada imagen
 	public String verTodo(){
 		ArrayList<Imagen> list = director.verTodo();
 		for (int i = 0; i < list.size();i++) {
@@ -22,11 +26,17 @@ public class Libreria {
 		}
 		return director.serializador(list);
 	}
+	//Fucion que pide a la base de datos la imagen con la id indicada
+	//despues pide al RAID los datos reales de la imagen
 	public String obtenerImagen(String id) {
 		Imagen img = director.obtenerImagen(id);
 		img.setDatos(raid.getDato(id));
 		return serializarImagen(img);
 	}
+	//Funcion que indica al BDDIrector que guarde una imagen, 
+	//antes de guardarla se envian lo datos con la id, al RAID
+	//y los datos que se guardan el la BD estan modificados,
+	//para reducir el espacion consumido en la BD
 	public void guardarImagen(Imagen img) {
 		raid.setDato(img.getId(), img.getDatos());
 		director.guardarImagen(img);

@@ -20,22 +20,33 @@ public class ConeccionC implements Runnable{
 	public static void main(String[] args) throws IOException{
 		new ConeccionC();
 	}
+	//Funcion que pide a la libreria en formato JSON todos los datos que se encuentran
+	//en la base de datos
 	static private void verTodo() throws IOException {
 		todo = Libreria.obtenerLibreria().verTodo();
 		return;
 	}
+	//Funcion que le pide la libreria los datos de la imagen en JSON
+	//ingresando un id, de una imagen en la BAse de Datos
 	static private void obtenerImagen(String id) throws IOException{
 		imagen = Libreria.obtenerLibreria().obtenerImagen(id);
 	}
+	//Fuancion que recibe una imagen, y le pide a la libreria que 
+	//la almacene en la base de datos
 	static private void guardarImagen(Imagen img) throws IOException{
 		Libreria.obtenerLibreria().guardarImagen(img);
 	}
+	//Funcion que recibe una imagen con los datos que se desean cambiar
+	//de una imagen con un id igual al ingresado
 	static private void renovarImagen(String id, Imagen n) {
 		Libreria.obtenerLibreria().renovarImagen(id, n);	
 	}
+	//Funcion que recibe un id, y le llama a la clase libreria para que 
+	//borre la imagen con el mismo id
 	static private void borrarImagen(String n) {
 		Libreria.obtenerLibreria().borrarImagen(n);
 	}
+	//Funcion que llama a la clase Libreria para cerrar la coneccion
 	static private void cerrarBD() {
 		Libreria.obtenerLibreria().cerrarBD();
 	}
@@ -52,6 +63,9 @@ public class ConeccionC implements Runnable{
                     System.out.println("------Se ha conectado un Cliente-----");
                     String inputLine; 
                     inputLine = in.readLine();
+                    if(inputLine == null) {
+                    	continue;
+                    }
                     boolean confirmacion = false;
                     System.out.println("Cliente dice: " + inputLine);
                     //bUSCAR TODO

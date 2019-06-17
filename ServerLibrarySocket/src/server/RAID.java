@@ -8,12 +8,14 @@ public class RAID {
     private PrintWriter out;
     private BufferedReader in;
     private String ip = "192.168.0.9";
-    private int port = 8080;
+    private int port = 8085;
     
     
 	public String getDato(String id){
 		String h = "010001011";
-		try {h = getDatoRAID(id);}
+		//id = "\""+id+"\"";
+		try {h = getDatoRAID(id);
+		if(h == null) {h="Me Cago en Blen :)";}}
 		catch(IOException e) {}
 		return h;
 	}
@@ -44,8 +46,7 @@ public class RAID {
     }
  
     private String sendMessage(String msg) throws IOException {
-    	String xd = GenerarString(100);
-        out.println("001");
+        out.println(msg);
         String resp = in.readLine();
         return resp;
     }
@@ -56,14 +57,6 @@ public class RAID {
         clientSocket.close();
     }
     
-    private String GenerarString(int tamano) {
-    	String xd = "";
-    	for(int i = 0; i <tamano ; i++) {
-    		xd= xd + "A";
-    	}
-    	System.out.println("Tamano del string: "+ xd.length());
-    	return xd;
-    }
 	
 	
 }

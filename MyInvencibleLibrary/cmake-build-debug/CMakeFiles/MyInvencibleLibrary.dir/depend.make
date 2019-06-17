@@ -10,7 +10,6 @@ CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o: ../Paridad2.h
 CMakeFiles/MyInvencibleLibrary.dir/Imagen.cpp.o: ../Pixel.h
 
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Archivo.h
-CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../BinDec.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Disco.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Imagen.h
 CMakeFiles/MyInvencibleLibrary.dir/main.cpp.o: ../Lista.h

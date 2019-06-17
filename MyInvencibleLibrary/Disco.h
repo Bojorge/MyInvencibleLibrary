@@ -5,14 +5,13 @@
 #ifndef MYINVENCIBLELIBRARY_DISCO_H
 #define MYINVENCIBLELIBRARY_DISCO_H
 
+
 #include "Paridad.h"
 #include "RAID_5.h"
 #include<stdlib.h>
 #include<time.h>
 #include <iostream>
 #include <fstream>
-#include <vector>
-
 using namespace std;
 
 class Disco {
@@ -31,6 +30,12 @@ public:
         vector<string> v3;
         vector<string> v4;
 
+        string D1=Disco1;
+        string D2=Disco2;
+        string D3=Disco3;
+        string D4=Disco4;
+
+
         string img=cdyimg[1];
         string cod=cdyimg[0];
         string vectrs;
@@ -39,14 +44,21 @@ public:
         v1=vctrs[0];
         v2=vctrs[1];
         v3=vctrs[2];
+        v1.pop_back();
+        v1.pop_back();
+        string tx=v1[v1.size()];
+        string ty=v1[v1.size()+1];
         v4=raid.RAID5(v1,v2,v3);
+        v1.push_back(tx);
+        v1.push_back(ty);
+        v4.push_back(tx);
+        v4.push_back(ty);
 
         srand(time(NULL));
 
         int Discorand=0 + rand() % (3 +1 - 0) ;
         int vect=0;
         while(vect<4){
-            //cout<<"metiendo el vector "<<vect<<endl;
             vector<string> guardar;
             if(vect==0){
                 guardar=v1;
@@ -63,12 +75,10 @@ public:
             if(Discorand==0){  //si el disco a guardar es el 0
                 string codigo=cod;
                 codigo=codigo.append(to_string(vect));
-                string ruta=Disco1.append(codigo);
-                ofstream archivo(ruta.append(".txt"));
-                archivo<<raid.vecToString(guardar);
-                cout<<"abierto" <<archivo.is_open()<<endl;
-                archivo.close();
-                cout<<"abierto" <<archivo.is_open()<<endl;
+                string ruta=D1.append(codigo);
+                ofstream archivo1(ruta.append(".txt"));
+                archivo1<<raid.vecToString(guardar);
+                archivo1.close();
                 vect++;
                 Discorand++;
                 continue;
@@ -76,10 +86,10 @@ public:
             if(Discorand==1){
                 string codigo=cod;
                 codigo=codigo.append(to_string(vect));
-                string ruta=Disco2.append(codigo);
-                ofstream archivo(ruta.append(".txt"));
-                archivo<<raid.vecToString(guardar);
-                archivo.close();
+                string ruta=D2.append(codigo);
+                ofstream archivo2(ruta.append(".txt"));
+                archivo2<<raid.vecToString(guardar);
+                archivo2.close();
                 vect++;
                 Discorand++;
                 continue;
@@ -87,10 +97,10 @@ public:
             if(Discorand==2){
                 string codigo=cod;
                 codigo=codigo.append(to_string(vect));
-                string ruta=Disco3.append(codigo);
-                ofstream archivo(ruta.append(".txt"));
-                archivo<<raid.vecToString(guardar);
-                archivo.close();
+                string ruta=D3.append(codigo);
+                ofstream archivo3(ruta.append(".txt"));
+                archivo3<<raid.vecToString(guardar);
+                archivo3.close();
                 vect++;
                 Discorand++;
                 continue;
@@ -98,16 +108,15 @@ public:
             if(Discorand==3){
                 string codigo=cod;
                 codigo=codigo.append(to_string(vect));
-                string ruta=Disco4.append(codigo);
-                ofstream archivo(ruta.append(".txt"));
-                archivo<<raid.vecToString(guardar);
-                archivo.close();
+                string ruta=D4.append(codigo);
+                ofstream archivo4(ruta.append(".txt"));
+                archivo4<<raid.vecToString(guardar);
+                archivo4.close();
                 vect++;
                 Discorand=0;
                 continue;
             }
         }
-        return;
         //convertir cada vector en string y guardarlo en txt en cada disco
     }
 
@@ -116,12 +125,19 @@ public:
         string parteS2="";
         string parteS3="";
         string parteS4="";
+        string tx;
+        string ty;
 
         //Se agrega
-        string archivo1=Disco1.append(codigo);
-        string archivo2=Disco2.append(codigo);
-        string archivo3=Disco3.append(codigo);
-        string archivop=Disco4.append(codigo);
+        string archivo1=Disco1;
+        string archivo2=Disco2;
+        string archivo3=Disco3;
+        string archivop=Disco4;
+        archivo1.append(codigo);
+        archivo2.append(codigo);
+        archivo3.append(codigo);
+        archivop.append(codigo);
+
 
         //Buscar la primera parte en todos los discos
         string parte=archivo1;
@@ -150,20 +166,34 @@ public:
                     contArch++;
                     continue;
                 }
-                cout<<"buscando archivo 1"<<endl;
+                //cout<<"buscando archivo 1"<<endl;
                 string strtemp=guardar;
-                ifstream fe(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe1;
+                fe1.open(strtemp.append(to_string(contArch).append(".txt")));
+                cout<<"buscando "<<strtemp<<endl;
                 strtemp="";
-                if(fe.good()) {
-                    fe>>parteS1;
-                    cout<<parteS1<<endl;
-                    fe.close();
+
+                if(fe1.good()) {
+                    fe1>>parteS1;
+                    vector<string> p1st=paridad.split(parteS1,"~");
+                    tx=p1st[p1st.size()-2];
+                    //p1st.pop_back();
+                    ty=p1st[p1st.size()-1];
+                    p1st.pop_back();
+                    p1st.pop_back();
+                    parteS1=paridad.vecToString(p1st);
+                    fe1.close();
                     contDico=0;
                     contArch++;
                     contbusq=0;
-                    cout<<"se encontro archivo"<<endl;
+                    //cout<<"se encontro archivo"<<endl;
                     continue;
-                }else{contbusq++;contDico++;continue;}
+                }
+                contbusq++;
+                contDico++;
+                fe1.close();
+                continue;
+
             }
 
             if(contArch==1){
@@ -173,20 +203,25 @@ public:
                     contArch++;
                     continue;
                 }
-                cout<<"buscando archivo 2"<<endl;
+                //cout<<"buscando archivo 2"<<endl;
                 string strtemp=guardar;
-                ifstream fe(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe2;
+                fe2.open(strtemp.append(to_string(contArch).append(".txt")));
                 strtemp="";
-                if(fe.good()) {
-                    fe>>parteS2;
-                    cout<<parteS2<<endl;
-                    fe.close();
+                if(fe2.good()) {
+                    fe2>>parteS2;
+                    fe2.close();
                     contDico=0;
                     contArch++;
                     contbusq=0;
-                    cout<<"se encontro archivo"<<endl;
+                    //cout<<"se encontro archivo"<<endl;
                     continue;
-                }else{contbusq++;contDico++;continue;}
+                }
+                contbusq++;
+                contDico++;
+                fe2.close();
+                continue;
+
             }
             if(contArch==2){
                 if(contbusq==4){
@@ -195,20 +230,25 @@ public:
                     contArch++;
                     continue;
                 }
-                cout<<"buscando archivo 3"<<endl;
+                //cout<<"buscando archivo 3"<<endl;
                 string strtemp=guardar;
-                ifstream fe(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe3;
+                fe3.open(strtemp.append(to_string(contArch).append(".txt")));
                 strtemp="";
-                if(fe.good()) {
-                    fe>>parteS3;
-                    cout<<parteS3<<endl;
-                    fe.close();
+                if(fe3.good()) {
+                    fe3>>parteS3;
+                    fe3.close();
                     contDico=0;
                     contArch++;
                     contbusq=0;
-                    cout<<"se encontro archivo"<<endl;
+                    //cout<<"se encontro archivo"<<endl;
                     continue;
-                }else{contbusq++;contDico++;continue;}
+                }
+                contbusq++;
+                contDico++;
+                fe3.close();
+                continue;
+
             }
             if(contArch==3){
                 if(contbusq==4){
@@ -217,20 +257,29 @@ public:
                     contArch++;
                     continue;
                 }
-                cout<<"buscando archivo 4"<<endl;
+                //cout<<"buscando archivo 4"<<endl;
                 string strtemp=guardar;
-                ifstream fe(strtemp.append(to_string(contArch).append(".txt")));
+                ifstream fe4;
+                fe4.open(strtemp.append(to_string(contArch).append(".txt")));
                 strtemp="";
-                if(fe.good()) {
-                    fe>>parteS4;
-                    cout<<parteS4<<endl;
-                    fe.close();
+                if(fe4.good()) {
+                    fe4>>parteS4;
+                    fe4.close();
+                    vector<string> p1st=paridad.split(parteS4,"~");
+                    p1st.pop_back();
+                    p1st.pop_back();
+                    parteS4=paridad.vecToString(p1st);
                     contDico=0;
                     contArch++;
                     contbusq=0;
-                    cout<<"se encontro archivo"<<endl;
+                    //cout<<"se encontro archivo"<<endl;
                     continue;
-                }else{contbusq++;contDico++;continue;}
+                }
+                contbusq++;
+                contDico++;
+                fe4.close();
+                continue;
+
             }
 
         }
@@ -246,16 +295,20 @@ public:
             cout<<"no se encuentra el 3"<<endl;
             parteS3=raid.RAIDString(parteS4,parteS2,parteS1);
         }
+        string imag="P3~in#~";
+        tx.append("~");
+        ty.append("255");
         parteS1.append("~");
         parteS2.append("~");
-        parteS1.append(parteS2.append(parteS3));
-        return parteS1;
+        imag.append(tx.append(ty.append(parteS1.append(parteS2.append(parteS3)))));
+        return imag;
 
     }
 
 
 
 };
+
 
 
 #endif //MYINVENCIBLELIBRARY_DISCO_H

@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Imagen.h"
 #include "Archivo.h"
-#include "BinDec.h"
 #include "Servidor.h"
 #include "Paridad.h"
 #include "Disco.h"
@@ -23,10 +22,14 @@ using namespace std;
 
 int main() {
 
-    //Servidor servidor;
-    //servidor.iniciar();
-    //cout<<"\n *** pasa a la siguiente linea *** \n";
+    Servidor servidor;
+    if(servidor.iniciar()==0){
+        sleep(3);
+        servidor.reiniciar();
+    };
+    cout<<"\n *** pasa a la siguiente linea *** \n";
 
+    servidor.iniciar();
     //BinDec convertir;
     //convertir.binAdeci(1111);
     //convertir.decAbina(6);
@@ -34,8 +37,8 @@ int main() {
     //Archivo archivo;
     //archivo.crear("nombre del archivo");
 
-    Imagen I;
-    I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/Imagenes de prueba/pixels.ppm");
+    //Imagen I;
+    //I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/Imagenes de prueba/color.ppm");
     //I.leer("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/homero.txt");
     //I.dividir("/home/manuel/CLionProjects/MyInvencibleLibrary/DISCO1/color.txt");
     //I.invertir();

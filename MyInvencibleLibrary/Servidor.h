@@ -19,7 +19,7 @@
 #include "Disco.h"
 #include "Paridad.h"
 
-#define MAX 800
+#define MAX 8000
 #define PORT 8080
 #define SA struct sockaddr
 
@@ -46,22 +46,18 @@ public:
         read(sockfd, buff, sizeof(buff));
 
         printf("\n ... leyendo ...  \n");
-        //char buffer[500];
-        //string o(buff);
         string o=buff;
-        //strcpy(buffer, o.c_str());
         cout<<"tamano del buff "<< sizeof(buff)<<endl;
         cout<<"tamano del string "<<o.size()<<endl;
         cout<<"valor de O "<<o<<endl;
         string cod;
 
-        cout<<"tamano del string "<<cod<<endl;
+        cout<<"tamano del string "<<o.size()<<endl;
 
         if(o.size()==4){
             cod+=o[0];
             cod+=o[1];
             cod+=o[2];
-        //if (strncmp(buffer, buff, 3) == 0) {
             printf("\n Se recibio el codigo  \n");
             char pixeles [500];
             string x=disco.READ(cod);
@@ -73,11 +69,15 @@ public:
         }
 
         if(o.size()>4) {
+            cout<<"Haciendo WRITE con  "<<o<<endl;
+
             cout<<"valor de O "<<o<<endl;
+            char pixeles [2];
+            string x="ok";
+            strcpy(pixeles, x.c_str());
             disco.WRITE(o);
-            write(sockfd, " ok ", sizeof(buff));
+            write(sockfd, pixeles, sizeof(buff));
             bzero(buff, MAX);
-            //printf("cliente envia >>> : %s\t");
             return true;
         }
         return true;
@@ -102,7 +102,6 @@ public:
         for(int i=0;i<tamano;i++){
             buff[i]=txt[i];
         }
-        //strcpy(x,texto.c_str());
         printf("Enviar al cliente >>> : ", buff);
         bzero(buff, MAX);
 
@@ -120,20 +119,21 @@ public:
 
     void puerto(int sockfd){
         // infinite loop for chat
-        for (;;) {
+        //for (;;) {
 
-            if(leerImagen(sockfd)){
-                break;
-            };
+        leerImagen(sockfd);
+            //if(leerImagen(sockfd)){
+                //break;
+          //  };
 
 
             //enviarImagen(sockfd);
 
 
-            if(terminarConexion()){
-                break;
-            }
-        }
+            //if(terminarConexion()){
+              //  break;
+            //}
+        //}
 
     };
 
@@ -143,7 +143,11 @@ public:
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
         if (sockfd == -1) {
             printf("\n reinicio de conexion:  *** fallido ***\n");
-            exit(0);
+            close(sockfd);
+            sleep(2);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("\n reinicio exitoso \n");
         bzero(&servaddr, sizeof(servaddr));
@@ -156,14 +160,22 @@ public:
         // Binding newly created socket to given IP and verification
         if ((bind(sockfd, (SA *) &servaddr, sizeof(servaddr))) != 0) {
             printf("Fallo el enlace al socket ...\n");
-            exit(0);
+            close(sockfd);
+            sleep(2);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("Socket exitosamente enlazado..\n");
 
         // Now server is ready to listen and verification
         if ((listen(sockfd, 5)) != 0) {
             printf("Listen failed...\n");
-            exit(0);
+            close(sockfd);
+            sleep(2);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("\n Servidor escuchando ...\n");
         len = sizeof(cli);
@@ -172,7 +184,11 @@ public:
         connfd = accept(sockfd, (SA *) &cli, &len);
         if (connfd < 0) {
             printf("server acccept failed...\n");
-            exit(0);
+            close(sockfd);
+            sleep(2);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("server acccept the client...\n");
 
@@ -194,8 +210,9 @@ public:
             printf("creacion del socket fallida ...\n");
             close(sockfd);
             sleep(2);
-            reiniciar();
-            exit(0);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("Socket exitosamente creado ...\n");
         bzero(&servaddr, sizeof(servaddr));
@@ -210,8 +227,9 @@ public:
             printf("Fallo el enlace al socket ...\n");
             close(sockfd);
             sleep(2);
-            reiniciar();
-            exit(0);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("Socket exitosamente enlazado..\n");
 
@@ -220,8 +238,9 @@ public:
             printf("Listen failed...\n");
             close(sockfd);
             sleep(2);
-            reiniciar();
-            exit(0);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("\n Servidor escuchando ...\n");
         len = sizeof(cli);
@@ -232,8 +251,9 @@ public:
             printf("server acccept failed...\n");
             close(sockfd);
             sleep(2);
-            reiniciar();
-            exit(0);
+            //iniciar();
+            //exit(0);
+            return 0;
         } else
             printf("\n El servidor acepta al cliente ...\n");
 

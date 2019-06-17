@@ -29,18 +29,25 @@ int main() {
     res2 = raid.RAID5(lisa, lisc, res);
     vector<string> dividida;
     Paridad pasa;
-
     string cacsfd;
-    cacsfd = pasa.convString("gris.ppm");
-    cout<<"tama  "<<cacsfd<<endl;
-
-    vector<vector<string>> p1=pasa.dividir(pruebadiv);
-    cout << p1.size()<<"   " <<p1[1].size() <<"   "<< p1[2].size()<< endl;
+    cacsfd = pasa.imgTostring("gris.ppm");
+    //pasa.strTimg(cacsfd,"pruebagris");
+    //cout<<"dividida   "<<cacsfd<<endl;
+    //listalarga.pop_back();
+    //vector<vector<string>> p1=pasa.dividir(pruebadiv);
+    //cout << p1.size()<<"   " <<p1[1].size() <<"   "<< p1[2].size()<< endl;
     srand(time(NULL));
-    string cod = "005";
+    string cod = "747";
+    //paridad.dividir(pruebadiv);
     //disc.WRITE(cod.append("-").append(pruebadiv));
-    cout<<"dandole"<<endl;
-    //cout<<dis2.READ(cod)<<endl;
+    //sleep(1);
+    //cout<<"dandole"<<endl;
+    //cout<<dis2.READ("555")<<endl;
+    sleep(1);
+    cout<<dis2.READ("747")<<endl;
+    sleep(1);
+    system("clear");
+
     //cout<<cacsfd<<endl;
 
     //I.invertir();

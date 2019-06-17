@@ -8,12 +8,13 @@
 #include "Lista.h"
 #include <iostream>
 #include <fstream>
+//#include "RAID_5.h"
 using namespace std;
 
 
 class Paridad {
 public:
-    string convString(string imagen) { //Imagen tiene el string entero de la direccion de la imagen
+    string imgTostring(string imagen) { //Imagen tiene el string entero de la direccion de la imagen
         char cadena[128];
         string strdatos;
         ifstream fe(imagen);   //Se
@@ -24,7 +25,10 @@ public:
             strdatos.append("~");
         }
         fe.close();
-        return strdatos;
+        vector<string> nums=split(strdatos,"~");
+        nums.pop_back();
+        nums.pop_back();
+        return vecToString(nums);
     }
     vector<vector<string>> dividir(string texta){
         vector<string> datos;
@@ -32,6 +36,9 @@ public:
         vector<string> division=split (texta,"in~");
         string ret=division[1];
         vector<string> separados=split(ret,"~");
+        string tX=separados[0];
+        string tY=separados[1];
+        cout<<tX<<"   "<<tY<<endl;
         for(int i=3;i<=separados.size()-1;i++){
             string dta=separados[i];
             datos.push_back(dta);
@@ -53,13 +60,26 @@ public:
         for(int c=intervalo2;c<=intervalo3;c++){
             v3.push_back(datos[c]);
         }
-        cout<<"tamanios antes de terminar"<<v3[0] <<"  " <<v2.size() <<"  " <<v3.size() <<endl;
-
+        v1.push_back(tX);
+        v1.push_back(tY);
         div3.push_back(v1);
         div3.push_back(v2);
         div3.push_back(v3);
+        cout<<"tamanios antes de terminar"<<v1.size() <<"  " <<v2.size() <<"  " <<v3.size() <<endl;
+
         return div3;
     }
+    void strTimg(string imagen,string nombre){
+        nombre.append(".ppm");
+        string direccion="/home/aaron/Desktop/";
+        direccion.append(nombre);
+        ofstream fs(direccion);
+        vector<string> datos=split(imagen,"~");
+        for(int i=0;i<=datos.size()-1;i++){
+            fs<<datos[i]<<endl;
+        }
+        fs.close();
+    };
 
     vector<string> split (string s, string delimiter) {
         size_t pos_start = 0, pos_end, delim_len = delimiter.length();
@@ -75,6 +95,18 @@ public:
         res.push_back (s.substr (pos_start));
         return res;
     }
+    string vecToString(vector<string> lista){
+        string vTs;
+        for(int i=0;i<=lista.size()-2;i++){
+            //cout<<lista[i]<<endl;
+            vTs.append(lista[i]);
+            vTs.append("~");
+        }
+        vTs.append(lista[lista.size()-1]);
+        return vTs;
+    }
+
+
 };
 
 #endif //MYINVENCIBLELIBRARY_PARIDAD_H

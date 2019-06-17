@@ -1,5 +1,4 @@
 //
-// Created by manuel on 12/06/19.
 //
 
 #ifndef MYINVENCIBLELIBRARY_ARCHIVOBINARIO_H
@@ -8,6 +7,8 @@
 #include <cstdio>
 #include <fstream>
 #include <iostream>
+
+//clase que crea el archivo binario
 
 class ArchivoBinario {
 
@@ -20,7 +21,7 @@ class ArchivoBinario {
 
 
 public:
-
+    //metodo que escribe un archivo binario que recibe como entrada el nombre del archivo, la cant de letras y el objeto letras
     int escribirArchivoBinario(char nombreArchivo[],int cantidadLetras, Objeto letras[]){
         FILE *archivo = fopen(nombreArchivo, "wb");
 
@@ -38,7 +39,7 @@ public:
 
     };
 
-
+    //metodo tipo void que crea el archivo binario
     void crearArchivoBinaro(){
 
         Objeto letras[] = {
@@ -57,7 +58,7 @@ public:
 
 
     };
-
+    //metodo que retorna int que se encaraga de leer el archivo binario y recibe como parametros el nombre del archivo y la cant de letras
     int leerArchivoBinario(char nombreArchivo[], int cantidadLetras){
 
 

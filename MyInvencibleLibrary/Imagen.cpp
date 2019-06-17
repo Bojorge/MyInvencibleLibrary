@@ -37,7 +37,9 @@ Imagen::Imagen(const Imagen &other)
     _ancho=other._ancho;
 }
 
-
+/**
+* @brief recibe la direccion de la imagen y obtiene los datos de esta
+ **/
 void Imagen::leer(string nombreFichero){
     ifstream F(nombreFichero.c_str());
     Paridad2 paridad;
@@ -85,12 +87,12 @@ void Imagen::leer(string nombreFichero){
         nombreArchivostr+=nombreArchivo[i];
     }
 
-    archivo.crear(nombreArchivostr);
-    archivo.crear(nombreArchivostr+"Parte1");
-    archivo.crear(nombreArchivostr+"Parte2");
-    archivo.crear(nombreArchivostr+"Parte3");
+    //archivo.crear(nombreArchivostr);
+    //archivo.crear(nombreArchivostr+"Parte1");
+    //archivo.crear(nombreArchivostr+"Parte2");
+    //archivo.crear(nombreArchivostr+"Parte3");
 
-    cout<<"\n archivos creados"<<endl;
+    //cout<<"\n archivos creados"<<endl;
 
     getline(F, linea);
 
@@ -122,37 +124,26 @@ void Imagen::leer(string nombreFichero){
         F >> _pixels[i].b;
         textoPixels+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
 
-        /*if(i=division-1){
-            textoParte1+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
-        }
-        if(i>=division && i<division*2){
-            textoParte2+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
-        }
-        if(i>=(division*2 && i<(division*3))){
-            textoParte3+=to_string(_pixels[i].r)+" "+to_string(_pixels[i].g)+" "+to_string(_pixels[i].b)+" ";
-        }
-        */
         if(i%_ancho == (_ancho-1)){
             textoPixels+="\n";
         }
     }
 
-    Imagen x;
-    x.escribirApartirDeTexto("/home/manuel/Escritorio/ImagenEscrita.ppm",textoPixels,_ancho, _alto);
+    //Imagen x;
+    //x.escribirApartirDeTexto("/home/manuel/Escritorio/ImagenEscrita.ppm",textoPixels,_ancho, _alto);
 
     texto+=textoPixels;
     textoParte1=paridad.dividir(textoPixels,1);
     textoParte2=paridad.dividir(textoPixels,2);
     textoParte3=paridad.dividir(textoPixels,3);
-    archivo.escribir(nombreArchivostr, texto);
-    archivo.escribir(nombreArchivostr+"Parte1",textoParte1);
-    archivo.escribir(nombreArchivostr+"Parte2",textoParte2);
-    archivo.escribir(nombreArchivostr+"Parte3",textoParte3);
-
+    //archivo.escribir(nombreArchivostr, texto);
+    //archivo.escribir(nombreArchivostr+"Parte1",textoParte1);
+    //archivo.escribir(nombreArchivostr+"Parte2",textoParte2);
+    //archivo.escribir(nombreArchivostr+"Parte3",textoParte3);
 }
 
 
-
+//recibe una direccion para guardar la imagen y la crea
 void Imagen::escribir(std::string nombreFichero) const {
     ofstream F(nombreFichero.c_str());
     F << "P3" << endl;
@@ -170,6 +161,10 @@ void Imagen::escribir(std::string nombreFichero) const {
     }
 }
 
+/**
+* @brief recibe una direccion para guardar la imagen, un string con los pixeles, el tamaño y la crea
+ **/
+
 void Imagen::escribirApartirDeTexto(std::string nombreFichero,std::string pixeles, int _ancho, int _alto) const {
     ofstream F(nombreFichero.c_str());
     F << "P3" << endl;
@@ -185,17 +180,12 @@ void Imagen::escribirApartirDeTexto(std::string nombreFichero,std::string pixele
     }
 
 
-    /*
-    for(int i=0; i<_pixels.size(); i++){
-        F << _pixels[i].r << ' ';
-        F << _pixels[i].g << ' ';
-        F << _pixels[i].b << ' ';
-        if(i%_ancho == (_ancho-1)){
-            F << endl;
-        }
-    }*/
+
 }
 
+/**
+* @brief divide la imagen en 3
+ **/
 void Imagen::dividir(string NombreArchivo){
     ifstream F(NombreArchivo.c_str());
     int V1;
@@ -229,9 +219,6 @@ void Imagen::dividir(string NombreArchivo){
     V1=_ancho*_alto;
     V2=V1;
     V3=V1;
-    //int vector1[V1];
-    //int vector2[V2];
-    //int vector3[V3];
     vector<int> vector1;
     vector<int> vector2;
     vector<int> vector3;
@@ -251,42 +238,18 @@ void Imagen::dividir(string NombreArchivo){
             textoPixeles+="\n";
         }
 
-        /*
-        if(i < V1) {
-            vector1[i] = _pixels[i].r;
-            vector1[i + 1] = _pixels[i].g;
-            vector1[i + 2] = _pixels[i].b;
 
-            //cout << vector1[i]<<"  "<< vector1[i+1]<<"  "<< vector1[i+2]<<endl;
-
-
-        }
-        else if(i >= V1 && i < V1*2) {
-            for(int y=0; y< V1-3; y++) {
-                vector2[y] = _pixels[i].r;
-                vector2[y + 1] = _pixels[i].g;
-                vector2[y + 2] = _pixels[i].b;
-            }
-        }
-        else if (i>=V1+2){
-            for(int z=0; z< V1-3; z++){
-                vector3[z]=_pixels[i].r;
-                vector3[z+1]=_pixels[i].g;
-                vector3[z+2]=_pixels[i].b;
-            }
-        }
-*/
     }
     texto+=textoPixeles;
     cout<<texto;
 
-    /*for(int o=0; o< V1-3; o++) {
-        cout << vector1[o]<<endl;
-    }*/
 
 }
 
-
+/**
+* @brief divide la imagen en 3
+ **/
+//se indican las dimendiones y se reduce la imagen a ese tamaño
 Imagen Imagen::cortar(int izq, int arr, int der, int aba) const {
     Imagen T(der-izq, aba-arr);
     for(int i=izq; i<der; i++){
@@ -301,6 +264,9 @@ Imagen Imagen::cortar(int izq, int arr, int der, int aba) const {
     return T;
 }
 
+/**
+* @brief pega la imagen sobre otra
+ **/
 void Imagen::pegar(const Imagen& I, int izq, int arr){
     for(int i=0; i<I.getAncho(); i++){
         for(int j=0; j<I.getAlto(); j++){
@@ -313,13 +279,18 @@ void Imagen::pegar(const Imagen& I, int izq, int arr){
     }
 }
 
+/**
+* @brief invierte los colores
+ **/
 void Pixel::invertir() {
     r = 255-r;
     g = 255-g;
     b = 255-b;
 }
 
-
+/**
+* @brief invierte la imagen
+ **/
 void Imagen::invertir() {
     for(int i=0; i < _pixels.size(); i++){
         _pixels[i].invertir();
@@ -332,6 +303,9 @@ int post(int x, int niveles) {
    return int(valor*255.0/(niveles-1));
 }
 
+/**
+* @brief reduce la cantidad de colores de 255 a "niveles"
+ **/
 void Pixel::posterizar(int niveles) {
     r = post(r, niveles);
     g = post(g, niveles);

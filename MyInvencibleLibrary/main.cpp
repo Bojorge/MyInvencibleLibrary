@@ -21,14 +21,18 @@
 using namespace std;
 
 int main() {
-
+    //Disco disco;
+    //Paridad par;
+    //string cod="011-";
+    //string a=par.imgTostring("/home/manuel/CLionProjects/MyInvencibleLibrary/Imagenes de prueba/homero.ppm");
+    //disco.WRITE(cod.append(a));
     Servidor servidor;
     if(servidor.iniciar()==0){
         sleep(3);
         servidor.reiniciar();
     };
     cout<<"\n *** pasa a la siguiente linea *** \n";
-
+    sleep(3);
     servidor.iniciar();
     //BinDec convertir;
     //convertir.binAdeci(1111);

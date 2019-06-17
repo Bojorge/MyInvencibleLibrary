@@ -21,12 +21,6 @@ public:
 
     void crear(string nombre){
 
-        //string formato = ".txt";
-        //string nombreArchivo=nombre+".txt";
-
-        //strcpy(nombreArchivo,nombre);
-        //strcat(nombreArchivo,formato);
-
         escribir(nombre, "NULL");
 
     };
@@ -53,7 +47,6 @@ public:
 
         ifstream archivo;
         string texto;
-        //archivo.open("datosServer.txt",ios::in);
         archivo.open(nombreArchivo,ios::in);
 
         if(archivo.fail()){
